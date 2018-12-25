@@ -135,7 +135,7 @@ public class SwfToolUI extends JFrame {
                 mixMap=gson.fromJson(ois, HashMap.class);//(HashSet<String>)ois.readObject();
                 ois.close();
             }catch (Exception e){
-                e.printStackTrace();
+                //e.printStackTrace();
             }
 
             Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText());
