@@ -7,6 +7,7 @@ import com.adobe.flash.abc.visitors.IABCVisitor;
 import com.adobe.flash.swf.Header;
 import com.adobe.flash.swf.SWF;
 import com.adobe.flash.swf.SWFFrame;
+import com.adobe.flash.swf.io.SWFDump;
 import com.adobe.flash.swf.io.SWFReader;
 import com.adobe.flash.swf.tags.DoABCTag;
 import com.adobe.flash.swf.tags.ICharacterTag;
@@ -17,6 +18,7 @@ import com.google.gson.GsonBuilder;
 
 import javax.swing.*;
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -62,6 +64,8 @@ public class Mixer
         this.isMixFunc=isMixFunc;
         this.mixcode=mixcode;
 
+        long time=System.currentTimeMillis();
+        System.out.println("start gson"+time);
         Gson gson=new GsonBuilder().disableHtmlEscaping().create();
         FileReader ois=null;
         try{
@@ -72,16 +76,23 @@ public class Mixer
             e.printStackTrace();
             nomixMap=new HashSet<>();
         }
+        System.out.println(System.currentTimeMillis()-time);
+        time=System.currentTimeMillis();
+        System.out.println("start reset"+time);
         reset();
-
+        System.out.println(System.currentTimeMillis()-time);
+        time=System.currentTimeMillis();
+        System.out.println("start swfreader"+time);
         SWFReader reader=new SWFReader();
         try {
-            swf = (SWF)reader.readFrom(new FileInputStream(file), file.getPath());
+            URL url=file.toURI().toURL();
+            swf = (SWF)reader.readFrom(new BufferedInputStream(url.openStream()), url.getPath());
             swf.getHeader().setSignature(Header.SIGNATURE_COMPRESSED_LZMA);
 
         }catch (Exception err){
             err.printStackTrace();
         }
+        System.out.println(System.currentTimeMillis()-time);
 
         for(SWFFrame frame: swf.getFrames()){
             Iterator<ITag> it=frame.iterator();
@@ -94,11 +105,16 @@ public class Mixer
                 }
             }
         }
-        System.out.println("over");
+        time=System.currentTimeMillis();
+        System.out.println("start findabc"+time);
         for(DoABCTag abcTag:abcs){
             findABC(abcTag);
         }
+        System.out.println(System.currentTimeMillis()-time);
+        time=System.currentTimeMillis();
+        System.out.println("start domix"+time);
         doMix();
+        System.out.println(System.currentTimeMillis()-time);
         outswf=swf;
     }
 
@@ -125,9 +141,12 @@ public class Mixer
 
     private void findABCMethodBodies(DoABCTag doABCTag) {
         ABCParser abcParser=new ABCParser(doABCTag.getABCData());
+        long time=System.currentTimeMillis();
+        System.out.println("start parseABC"+time);
         ABCEmitter abc=new ABCEmitter();
         abc.setAllowBadJumps(true);
         abcParser.parseABC(abc);
+        System.out.println(System.currentTimeMillis()-time);
 
         tag2abc.put(doABCTag,abc);
 

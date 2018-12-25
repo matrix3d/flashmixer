@@ -139,14 +139,19 @@ public class SwfToolUI extends JFrame {
             }
 
             Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText());
+           long time=System.currentTimeMillis();
+            System.out.println("start writeswf"+time);
             SWFWriter writer=new SWFWriter(mixer.outswf,mixer.outswf.getHeader().getCompression());
             try {
                 writer.writeTo(new File(file.getParent()+File.separator+"mix_"+file.getName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println(System.currentTimeMillis()-time);
 
             //Files.writeByte(f.parent.resolvePath(nameBase+"_strings"), stringMapByte);
+            time=System.currentTimeMillis();
+            System.out.println("start writestr"+time);
             FileWriter oos=null;
             try {
                 oos = new FileWriter(file.getParent() + File.separator + file.getName()+"_strs");
@@ -165,6 +170,7 @@ public class SwfToolUI extends JFrame {
             }catch (Exception e){
                 e.printStackTrace();
             }
+            System.out.println(System.currentTimeMillis()-time);
             output.setText(output.getText()+"\ncomp");
             //Files.writeString(f.parent.resolvePath(nameBase+"_strings.txt"), JSON.stringify(mixer.stringMap,null,4));
             //Files.writeString(f.parent.resolvePath(nameBase+"_mixed.txt"), JSON.stringify(mixer.mixedMap, null, 4));
