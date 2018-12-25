@@ -84,7 +84,7 @@ public final class ABCEmitter
     public int versionABCMajor = -1;
     public int versionABCMinor = -1;
     private boolean allowBadJumps = false;
-    private boolean eagerlyEmitMethodBodies = true;
+    private boolean eagerlyEmitMethodBodies = false;
     private final ReentrantLock lock;
     private boolean visitEndCalled;
     private final IDiagnosticsVisitor diagnosticsVisitor;

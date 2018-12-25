@@ -161,8 +161,10 @@ public class Mixer
                 waitMixs.add(mi.getMethodName());
             }
             boolean isGetDefing = false;
+
             if(mb.getInstructionList()!=null) {
                 for (Instruction instruction : mb.getInstructionList().getInstructions()) {
+
                     if (instruction.getOpcode() == ABCConstants.OP_pushstring) {
                         String pstr = (String) instruction.getOperand(0);
                         nomixMap2.add(pstr);

@@ -126,7 +126,7 @@ public class SwfToolUI extends JFrame {
 
     private void mixswf(java.util.List<File> list){
         for(File file:list){
-            Gson gson=new GsonBuilder().disableHtmlEscaping().create();
+            Gson gson=new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
             FileReader ois=null;
             HashMap<String,String> mixMap=null;
