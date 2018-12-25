@@ -67,9 +67,9 @@ public class Mixer
         long time=System.currentTimeMillis();
         System.out.println("start gson"+time);
         Gson gson=new GsonBuilder().disableHtmlEscaping().create();
-        FileReader ois=null;
+        InputStreamReader ois=null;
         try{
-            ois=new FileReader(getClass().getResource("/res/airglobal_strs").getFile());
+            ois=new InputStreamReader(this.getClass().getResourceAsStream("/res/airglobal_strs"));
             nomixMap=gson.fromJson(ois,HashSet.class);//(HashSet<String>)ois.readObject();
             ois.close();
         }catch (Exception e){
