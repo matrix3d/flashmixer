@@ -214,10 +214,12 @@ public class Mixer
                     if(instruction.getOpcode()==ABCConstants.OP_getproperty||instruction.getOpcode()==ABCConstants.OP_setproperty){
                         if (instruction.getOperandCount() > 0 && instruction.getOperand(0) instanceof Name) {
                             Name name = (Name) instruction.getOperand(0);
-                            for(Namespace ns : name.getQualifiers()){
-                                if("Object".equals(ns.getName())){
-                                    nomixMap2.add(name.getBaseName());
-                                    break;
+                            if(name.getQualifiers()!=null) {
+                                for (Namespace ns : name.getQualifiers()) {
+                                    if ("Object".equals(ns.getName())) {
+                                        nomixMap2.add(name.getBaseName());
+                                        break;
+                                    }
                                 }
                             }
                         }
