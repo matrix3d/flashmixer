@@ -245,8 +245,20 @@ public class Mixer
     {
         ABCEmitter abc=(ABCEmitter) tag2abc.get(doABCTag);
         for(ABCEmitter.EmitterClassVisitor ci : abc.definedClasses){
+            boolean mixVarAndFun=true;
+            if(ci.instanceInfo.superName!=null) {
+                String superClassName = ci.instanceInfo.superName.getBaseName();
+                String superPackName = ci.instanceInfo.superName.getSingleQualifier().getName();
+                if (("View".equals(superClassName)||"Dialog".equals(superClassName))&&"morn.core.components".equals(superPackName)) {
+                    mixVarAndFun=false;
+                }
+            }
             String nsname=ci.instanceInfo.name.getSingleQualifier().getName();
             String cname=ci.instanceInfo.name.getBaseName();
+            if(nsname.indexOf("morn")==0){//不混淆morn.的函数和变量
+                mixVarAndFun=false;
+            }
+
             if (nomixPackMap.contains(nsname)){
                 nomixMap2.add(cname);
                 nomixMap2.add(nsname);
@@ -259,11 +271,15 @@ public class Mixer
             }
             for(Trait trait : ci.instanceInfo.traits){
                 //System.out.println(trait.getName().getBaseName()+":"+trait.getKind());
-                if(isMixVar&&(trait.isSlot()||trait.isGetter()||trait.isSetter())){
-                    waitMixs.add(trait.getName().getBaseName());
-                }
-                if(isMixFunc&&trait.isMethod()){
-                    waitMixs.add(trait.getName().getBaseName());
+                if(mixVarAndFun){
+                    if(isMixVar&&(trait.isSlot()||trait.isGetter()||trait.isSetter())){
+                        waitMixs.add(trait.getName().getBaseName());
+                    }
+                    if(isMixFunc&&trait.isMethod()) {
+                        waitMixs.add(trait.getName().getBaseName());
+                    }
+                }else {
+                    nomixMap2.add(trait.getName().getBaseName());
                 }
             }
         }
