@@ -162,6 +162,9 @@ public class Mixer
 
         for (MethodBodyInfo mb : abc.methodBodies){
             MethodInfo mi=mb.getMethodInfo();
+            if(isMixFunc){
+                waitMixs.add(mi.getMethodName());
+            }
             Vector<Name> paramTypes= mi.getParamTypes();
             List<String> paramNames= mi.getParamNames();
             Vector<PooledValue> defaultValues= mi.getDefaultValues();
@@ -221,6 +224,8 @@ public class Mixer
                                         break;
                                     }
                                 }
+                            }else {
+                                nomixMap2.add(name.getBaseName());
                             }
                         }
                     }
@@ -254,7 +259,7 @@ public class Mixer
             }
             for(Trait trait : ci.instanceInfo.traits){
                 //System.out.println(trait.getName().getBaseName()+":"+trait.getKind());
-                if(isMixVar&&trait.isSlot()||trait.isGetter()||trait.isSetter()){
+                if(isMixVar&&(trait.isSlot()||trait.isGetter()||trait.isSetter())){
                     waitMixs.add(trait.getName().getBaseName());
                 }
                 if(isMixFunc&&trait.isMethod()){
@@ -265,7 +270,7 @@ public class Mixer
         for (String s : abc.stringPool.getValues()){
             stringMap.add(s);
         }for(Namespace ln : abc.nsPool.getValues()){
-            if (ln.getKind()==5){
+            if (ln.getKind()==5){//私有，不能混淆？
                 nomixMap2.add(ln.getName());
             }
         }

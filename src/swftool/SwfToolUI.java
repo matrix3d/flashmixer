@@ -64,11 +64,11 @@ public class SwfToolUI extends JFrame {
         top.add(mixclass);
          mixpackage=new JCheckBox("mixpackage",true);
         top.add(mixpackage);
-         mixmap=new JCheckBox("mixmap");
+         mixmap=new JCheckBox("mixmap",true);
         top.add(mixmap);
-         mixvar=new JCheckBox("mixvar");
+         mixvar=new JCheckBox("mixvar",true);
         top.add(mixvar);
-         mixfunc=new JCheckBox("mixfunc");
+         mixfunc=new JCheckBox("mixfunc",true);
         top.add(mixfunc);
          mixcode=new JTextField("[___mix___]");
         top.add(mixcode);
