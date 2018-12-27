@@ -56,7 +56,6 @@ public class Mixer
     private String mixcode;
     public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode)
     {
-
         this.mixMap = mixMap;
         this.isMixPackage = isMixPackage;
         this.isMixClass = isMixClass;
@@ -212,13 +211,24 @@ public class Mixer
                         }
                     }
 
+                    if(instruction.getOpcode()==ABCConstants.OP_getproperty||instruction.getOpcode()==ABCConstants.OP_setproperty){
+                        if (instruction.getOperandCount() > 0 && instruction.getOperand(0) instanceof Name) {
+                            Name name = (Name) instruction.getOperand(0);
+                            for(Namespace ns : name.getQualifiers()){
+                                if("Object".equals(ns.getName())){
+                                    nomixMap2.add(name.getBaseName());
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                     if (instruction.getOperandCount() > 0 && instruction.getOperand(0) instanceof Name) {
                         Name name = (Name) instruction.getOperand(0);
                         // System.out.println(name.getBaseName());
                         if ("getDefinitionByName".equals(name.getBaseName()) && "flash.utils".equals(name.getSingleQualifier().getName())) {
                             isGetDefing = true;
                         }
-
                     }
                 }
             }
@@ -241,10 +251,11 @@ public class Mixer
                 waitMixs.add(nsname);
             }
             for(Trait trait : ci.instanceInfo.traits){
-                if((trait.getKind()==0||trait.getKind()==2)&&isMixVar){
+                //System.out.println(trait.getName().getBaseName()+":"+trait.getKind());
+                if(isMixVar&&trait.isSlot()||trait.isGetter()||trait.isSetter()){
                     waitMixs.add(trait.getName().getBaseName());
                 }
-                if(trait.getKind()==1&&isMixFunc){
+                if(isMixFunc&&trait.isMethod()){
                     waitMixs.add(trait.getName().getBaseName());
                 }
             }

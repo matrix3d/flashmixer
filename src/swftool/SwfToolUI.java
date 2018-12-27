@@ -2,6 +2,7 @@ package swftool;
 
 import com.adobe.flash.swf.Header;
 import com.adobe.flash.swf.SWF;
+import com.adobe.flash.swf.io.SWFDump;
 import com.adobe.flash.swf.io.SWFReader;
 import com.adobe.flash.swf.io.SWFWriter;
 import com.google.gson.Gson;
@@ -79,6 +80,9 @@ public class SwfToolUI extends JFrame {
         JButton btn2=new JButton("mix swf");
         btn2.setPreferredSize(new Dimension(100,100));
         top.add(btn2);
+        JButton btn3=new JButton("dump swf");
+        btn3.setPreferredSize(new Dimension(100,100));
+        top.add(btn3);
 
         JPanel bot=new JPanel();
         bot.setLayout(new BoxLayout(bot, BoxLayout.Y_AXIS));
@@ -113,6 +117,25 @@ public class SwfToolUI extends JFrame {
                         dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
                         java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
                         mixswf(list);
+                        dtde.dropComplete(true);
+                    }else{
+                        dtde.rejectDrop();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+        });
+
+
+        new DropTarget(btn3, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
+            @Override
+            public void drop(DropTargetDropEvent dtde) {
+                try{
+                    if(dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+                        dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
+                        java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
+                        dump(list);
                         dtde.dropComplete(true);
                     }else{
                         dtde.rejectDrop();
@@ -212,6 +235,18 @@ public class SwfToolUI extends JFrame {
             }
         }
 
+        //showMessageDialog(null,"over");
+    }
+    private void dump(java.util.List<File> list){
+
+        for(File file:list){
+            try{
+                SWFDump.main(new String[]{"-decompile","-abc","-asm",file.getPath()});
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
         //showMessageDialog(null,"over");
     }
 }
