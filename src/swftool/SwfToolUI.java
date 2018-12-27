@@ -27,6 +27,7 @@ public class SwfToolUI extends JFrame {
     JCheckBox mixclass;
     JCheckBox mixpackage;
     JCheckBox mixmap;
+    JCheckBox negMixmap;
     JCheckBox mixvar;
     JCheckBox mixfunc;
     JTextField mixcode;
@@ -66,6 +67,8 @@ public class SwfToolUI extends JFrame {
         top.add(mixpackage);
          mixmap=new JCheckBox("mixmap",true);
         top.add(mixmap);
+        negMixmap=new JCheckBox("negmixmap",false);
+        top.add(negMixmap);
          mixvar=new JCheckBox("mixvar",true);
         top.add(mixvar);
          mixfunc=new JCheckBox("mixfunc",true);
@@ -157,6 +160,15 @@ public class SwfToolUI extends JFrame {
                 ois=new FileReader(new File(file.getParent()+File.separator+file.getName()+"_map"));
                 mixMap=gson.fromJson(ois, HashMap.class);//(HashSet<String>)ois.readObject();
                 ois.close();
+
+                if(negMixmap.isSelected()){
+                    HashMap<String,String> negmap=new HashMap<>();
+                    for(String key : mixMap.keySet()){
+                        negmap.put(mixMap.get(key),key);
+                    }
+                    mixMap=negmap;
+                }
+
             }catch (Exception e){
                 //e.printStackTrace();
             }
