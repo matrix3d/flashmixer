@@ -13,6 +13,7 @@
       <element id="extracted-dir" path="D:/sdk/AIRSDK_Compiler30/lib/lzma-sdk-9.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="D:/sdk/AIRSDK_Compiler30/lib/rideau.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/gson-2.8.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javadocking.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

@@ -255,7 +255,7 @@ public class Mixer
             }
             String nsname=ci.instanceInfo.name.getSingleQualifier().getName();
             String cname=ci.instanceInfo.name.getBaseName();
-            if(nsname!=null&&nsname.indexOf("morn")==0){//不混淆morn.的函数和变量
+            if(nsname!=null&&(nsname.indexOf("morn.")==0||"morn".equals(nsname))){//不混淆morn.的函数和变量
                 mixVarAndFun=false;
             }
 

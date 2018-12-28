@@ -22,8 +22,7 @@ import java.util.HashSet;
 
 import static javax.swing.JOptionPane.*;
 
-public class SwfToolUI extends JFrame {
-    private JTree tree;
+public class SwfToolUI extends Panel {
     JCheckBox mixclass;
     JCheckBox mixpackage;
     JCheckBox mixmap;
@@ -31,68 +30,35 @@ public class SwfToolUI extends JFrame {
     JCheckBox mixvar;
     JCheckBox mixfunc;
     JTextField mixcode;
-    JTextPane output=null;
     public SwfToolUI(){
-        super("swftool");
-        JMenuBar menuBar=new JMenuBar();
-        JMenu menu=new JMenu("ddd");
-        menuBar.add(menu);
-        JMenuItem item=new JMenuItem("item");
-        menu.add(item);
-        setJMenuBar(menuBar);
-        JToolBar toolBar=new JToolBar();
-        toolBar.setEnabled(false);
-        JButton button=new JButton("btn");
-        toolBar.add(button);
-        add(toolBar, BorderLayout.PAGE_START);
-
-        JSplitPane splitPane = new JSplitPane();
-        add(splitPane, BorderLayout.CENTER);
-        tree = new JTree();
-        JScrollPane jp=new JScrollPane(tree);
-        splitPane.add(jp,JSplitPane.LEFT);
-
-        JSplitPane right=new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-        right.setDividerLocation(250);
-        splitPane.add(right,JSplitPane.RIGHT);
-
-        JPanel top=new JPanel();
-        right.add(top, JSplitPane.TOP);
-        top.setLayout(new BoxLayout(top,BoxLayout.Y_AXIS));
+        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
 
          mixclass=new JCheckBox("mixclass",true);
-        top.add(mixclass);
+        add(mixclass);
          mixpackage=new JCheckBox("mixpackage",true);
-        top.add(mixpackage);
+        add(mixpackage);
          mixmap=new JCheckBox("mixmap",true);
-        top.add(mixmap);
+        add(mixmap);
         negMixmap=new JCheckBox("negmixmap",false);
-        top.add(negMixmap);
+        add(negMixmap);
          mixvar=new JCheckBox("mixvar",true);
-        top.add(mixvar);
+        add(mixvar);
          mixfunc=new JCheckBox("mixfunc",true);
-        top.add(mixfunc);
+        add(mixfunc);
          mixcode=new JTextField("[___mix___]");
-        top.add(mixcode);
+        add(mixcode);
 
         JButton btn1=new JButton("lzma swf");
         btn1.setPreferredSize(new Dimension(100,100));
-        top.add(btn1);
+        add(btn1);
 
         JButton btn2=new JButton("mix swf");
         btn2.setPreferredSize(new Dimension(100,100));
-        top.add(btn2);
+        add(btn2);
         JButton btn3=new JButton("dump swf");
         btn3.setPreferredSize(new Dimension(100,100));
-        top.add(btn3);
-
-        JPanel bot=new JPanel();
-        bot.setLayout(new BoxLayout(bot, BoxLayout.Y_AXIS));
-        output=new JTextPane();
-        bot.add(output);
-        output.setText("drop files to left panel");
-        right.add(bot,JSplitPane.BOTTOM);
+        add(btn3);
 
         new DropTarget(btn1, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
             @Override
@@ -206,7 +172,6 @@ public class SwfToolUI extends JFrame {
                 e.printStackTrace();
             }
             System.out.println(System.currentTimeMillis()-time);
-            output.setText(output.getText()+"\ncomp");
             //Files.writeString(f.parent.resolvePath(nameBase+"_strings.txt"), JSON.stringify(mixer.stringMap,null,4));
             //Files.writeString(f.parent.resolvePath(nameBase+"_mixed.txt"), JSON.stringify(mixer.mixedMap, null, 4));
 
