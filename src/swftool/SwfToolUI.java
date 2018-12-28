@@ -22,7 +22,7 @@ import java.util.HashSet;
 
 import static javax.swing.JOptionPane.*;
 
-public class SwfToolUI extends Panel {
+public class SwfToolUI extends JPanel {
     JCheckBox mixclass;
     JCheckBox mixpackage;
     JCheckBox mixmap;

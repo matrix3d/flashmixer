@@ -62,11 +62,10 @@ import com.javadocking.model.DockModel;
 import com.javadocking.model.DockModelUtil;
 import com.javadocking.model.DockingPath;
 import com.javadocking.model.FloatDockModel;
-import com.javadocking.util.ContactTree;
+import swftool.SwfTree;
 import com.javadocking.util.LAF;
 import com.javadocking.util.LookAndFeelUtil;
 import com.javadocking.util.SampleComponentFactory;
-import com.javadocking.util.Table;
 import com.javadocking.util.ToolBarButton;
 import com.javadocking.visualizer.DockingMinimizer;
 import com.javadocking.visualizer.FloatExternalizer;
@@ -79,8 +78,6 @@ import swftool.SwfToolUI;
  * 
  * Every dockable can be closed. When the dockable is added again later,
  * the dockable is docked as good as possible like it was docked before.
- * 
- * Most of the dockables can be maximized, except the 'Find' panel.
  * 
  * All the dockables can be minimized. The minimized components are also
  * put in dockables. They can be dragged and docked in other docks.
@@ -120,7 +117,7 @@ public class Main extends JPanel
 	{
 		
 		super(new BorderLayout());
-		
+
 		// Create the dock model for the docks, minimizer and maximizer.
 		FloatDockModel dockModel = new FloatDockModel("workspace.dck");
 		String frameId = "frame";
@@ -134,18 +131,16 @@ public class Main extends JPanel
 
 		// Create the content components.
 		SwfToolUI swfmixer = new SwfToolUI();
-		Table table = new Table(Table.TABLE);
-		ContactTree contactTree = new ContactTree();
+		SwfTree contactTree = new SwfTree();
 
 
 		// The arrays for the dockables and button dockables.
-		dockables = new Dockable[3];
+		dockables = new Dockable[2];
 		buttonDockables = new Dockable[42];
 
 		// Create the dockables around the content components.
 		dockables[0] = createDockable("swfmixer", 	 swfmixer,      "swfmixer",  new ImageIcon(getClass().getResource("/com/javadocking/resources/images/text12.gif")),     "<html>De Bello Gallico: Liber 1<br><i>Gaius Julius Caesar</i><html>");
-		dockables[1] = createDockable("Table",   table,      "Table",   new ImageIcon(getClass().getResource("/com/javadocking/resources/images/table12.gif")),    "Table with hello");
-		dockables[2] = createDockable("Contacts",contactTree,"Contacts",new ImageIcon(getClass().getResource("/com/javadocking/resources/images/person12.gif")),   "Sales Contacts");
+		dockables[1] = createDockable("Swf",contactTree,"Swf",new ImageIcon(getClass().getResource("/com/javadocking/resources/images/person12.gif")),   "Sales Contacts");
 
 		// The dockable with the find panel may not be maximized.
 		//((DefaultDockable)dockables[10]).setPossibleStates(DockableState.CLOSED | DockableState.NORMAL | DockableState.MINIMIZED | DockableState.EXTERNALIZED);
@@ -181,10 +176,9 @@ public class Main extends JPanel
 
 		// Add the dockables to these tab docks.
 		centerTabbedDock.addDockable(dockables[0], new Position(0));
-		centerTabbedDock.addDockable(dockables[1], new Position(1));
 		centerTabbedDock.setSelectedDockable(dockables[0]);
 
-		leftTabbedDock.addDockable(dockables[2], new Position(0));
+		leftTabbedDock.addDockable(dockables[1], new Position(0));
 		//rightTabbedDock.addDockable(dockables[13], new Position(0));
 
 		// The 4 windows have to be splittable.
@@ -425,8 +419,7 @@ public class Main extends JPanel
 	
 	/**
 	 * Sets the look and feel on the application.
-	 * 
-	 * @param 	lafClassName	The class name of the new look and feel.
+	 *
 	 */
 	private void setLookAndFeel(LAF laf)
 	{
@@ -465,10 +458,9 @@ public class Main extends JPanel
 	        	{
 	        		SwingUtilities.updateComponentTreeUI(dockables[dockableIndex].getContent());
 	        	}
-	        	for (int dockableIndex = 0; dockableIndex < buttonDockables.length; dockableIndex++)
-	        	{
-	        		SwingUtilities.updateComponentTreeUI(buttonDockables[dockableIndex].getContent());
-	        	}
+                for (Dockable buttonDockable : buttonDockables) {
+                    SwingUtilities.updateComponentTreeUI(buttonDockable.getContent());
+                }
 	        	
 	        }
 	    } catch (Exception e) { }
@@ -729,27 +721,28 @@ public class Main extends JPanel
 	{ 
 
 		// Create the look and feels.
-		LAFS  = new LAF[9];	
-		LAFS[0] = new LAF("Substance", "org.jvnet.substance.skin.SubstanceModerateLookAndFeel", LAF.THEME_DEAULT);
-		LAFS[1] = new LAF("Mac", "javax.swing.plaf.mac.MacLookAndFeel", LAF.THEME_DEAULT);
-		LAFS[2] = new LAF("Metal", "javax.swing.plaf.metal.MetalLookAndFeel", LAF.THEME_DEAULT);
-		LAFS[3] = new LAF("Liquid", "com.birosoft.liquid.LiquidLookAndFeel", LAF.THEME_DEAULT);
-		LAFS[4] = new LAF("Windows", "com.sun.java.swing.plaf.windows.WindowsLookAndFeel", LAF.THEME_DEAULT);
-		LAFS[5] = new LAF("Nimrod Ocean", "com.nilo.plaf.nimrod.NimRODLookAndFeel", LAF.THEME_OCEAN);
-		LAFS[6] = new LAF("Nimrod Gold", "com.nilo.plaf.nimrod.NimRODLookAndFeel", LAF.THEME_GOLD);
-		LAFS[7] = new LAF("Nimbus", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel", LAF.THEME_DEAULT);
-		LAFS[8] = new LAF("TinyLaF", "de.muntjak.tinylookandfeel.TinyLookAndFeel", LAF.THEME_DEAULT);
+
+        UIManager.LookAndFeelInfo[] lookAndFeels= UIManager.getInstalledLookAndFeels();
+
+		LAFS  = new LAF[lookAndFeels.length];
+		for(int i=0;i<lookAndFeels.length;i++){
+		    LAFS[i]=new LAF(lookAndFeels[i].getName(),lookAndFeels[i].getClassName(), LAF.THEME_DEAULT);
+        }
+		//LAFS[0] = new LAF("Substance", "org.jvnet.substance.skin.SubstanceModerateLookAndFeel", LAF.THEME_DEAULT);
+		//LAFS[1] = new LAF("Mac", "javax.swing.plaf.mac.MacLookAndFeel", LAF.THEME_DEAULT);
+		//LAFS[2] = new LAF("Metal", "javax.swing.plaf.metal.MetalLookAndFeel", LAF.THEME_DEAULT);
+		//LAFS[3] = new LAF("Liquid", "com.birosoft.liquid.LiquidLookAndFeel", LAF.THEME_DEAULT);
+		//LAFS[4] = new LAF("Windows", "com.sun.java.swing.plaf.windows.WindowsLookAndFeel", LAF.THEME_DEAULT);
+		//LAFS[5] = new LAF("Nimrod Ocean", "com.nilo.plaf.nimrod.NimRODLookAndFeel", LAF.THEME_OCEAN);
+		//LAFS[6] = new LAF("Nimrod Gold", "com.nilo.plaf.nimrod.NimRODLookAndFeel", LAF.THEME_GOLD);
+		//LAFS[7] = new LAF("Nimbus", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel", LAF.THEME_DEAULT);
+		//LAFS[8] = new LAF("TinyLaF", "de.muntjak.tinylookandfeel.TinyLookAndFeel", LAF.THEME_DEAULT);
 		
 		// Set the first enabled look and feel.
 
-			try 
+			try
 			{
-				if (LAFS[4].isSupported())
-				{
-					LAFS[4].setSelected(true);
-					UIManager.setLookAndFeel(LAFS[4].getClassName());
-					
-				}
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		    } catch (Exception e) { }
 
 		 
@@ -757,7 +750,7 @@ public class Main extends JPanel
 		LookAndFeelUtil.removeAllSplitPaneBorders();
 		
 		// Create the frame.
-		JFrame frame = new JFrame("Main Example");
+		JFrame frame = new JFrame("swfmixer");
 		
 		// Set the default location and size.
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
