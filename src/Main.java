@@ -28,6 +28,9 @@ import javax.swing.KeyStroke;
 import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.javadocking.DockingManager;
 import com.javadocking.dock.BorderDock;
@@ -62,6 +65,8 @@ import com.javadocking.model.DockModel;
 import com.javadocking.model.DockModelUtil;
 import com.javadocking.model.DockingPath;
 import com.javadocking.model.FloatDockModel;
+import swftool.ABCEmitter;
+import swftool.CodeView;
 import swftool.SwfTree;
 import com.javadocking.util.LAF;
 import com.javadocking.util.LookAndFeelUtil;
@@ -258,7 +263,24 @@ public class Main extends JPanel
 		JMenuBar menuBar = createMenu(dockables);
 		frame.setJMenuBar(menuBar);
 
-	}
+        contactTree.tree.addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode treeNode =(DefaultMutableTreeNode)(e.getPath().getLastPathComponent());
+                System.out.println(treeNode.getUserObject());
+                if(treeNode.getUserObject() instanceof ABCEmitter.EmitterClassVisitor) {
+                    ABCEmitter.EmitterClassVisitor visitor = (ABCEmitter.EmitterClassVisitor) treeNode.getUserObject();
+                    if (visitor != null) {
+                        CodeView codeView= new CodeView(visitor);
+                        Dockable dockable=createDockable(treeNode.toString(), 	 codeView,      treeNode.toString(),  new ImageIcon(getClass().getResource("/com/javadocking/resources/images/text12.gif")),     "<html>De Bello Gallico: Liber 1<br><i>Gaius Julius Caesar</i><html>");
+
+                        centerTabbedDock.addDockable(dockable, new Position(0));
+                    }
+                }
+            }
+        });
+
+    }
 	
 	/**
 	 * Decorates the given dockable with all state actions.

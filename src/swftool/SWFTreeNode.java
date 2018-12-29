@@ -14,22 +14,24 @@ import java.util.HashMap;
  * created by lizhi
  */
 public class SWFTreeNode extends DefaultMutableTreeNode {
-    public SWF swf=null;
     public File file=null;
-    public DefaultMutableTreeNode[] nodes=new DefaultMutableTreeNode[9];
-    public SWFTreeNode(File file){
+    public String treeName;
+    public DefaultMutableTreeNode[] nodes=new DefaultMutableTreeNode[0];
+    public SWFTreeNode(File file,String name,Object data){
         this.file=file;
-        SWFReader reader=new SWFReader();
-        try {
-            swf = (SWF)reader.readFrom(new FileInputStream(file), file.getPath());
-        }catch (Exception err){
-            err.printStackTrace();
-        }
-
+        treeName=name;
+        if(data!=null)
+        setUserObject(data);
     }
 
     @Override
     public String toString() {
-        return file.getName();
+        if(treeName!=null){
+            return treeName;
+        }
+        if(file!=null){
+            return file.getName();
+        }
+        return super.toString();
     }
 }
