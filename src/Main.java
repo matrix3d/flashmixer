@@ -32,7 +32,6 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import com.adobe.flash.abc.semantics.ScriptInfo;
 import com.javadocking.DockingManager;
 import com.javadocking.dock.BorderDock;
 import com.javadocking.dock.CompositeLineDock;
@@ -74,6 +73,9 @@ import com.javadocking.util.ToolBarButton;
 import com.javadocking.visualizer.DockingMinimizer;
 import com.javadocking.visualizer.FloatExternalizer;
 import com.javadocking.visualizer.SingleMaximizer;
+import swftool.swftree.CodeInfo;
+import swftool.swftree.CodeView;
+import swftool.swftree.SwfTree;
 
 /**
  * In this example graphical components are put in dockables.

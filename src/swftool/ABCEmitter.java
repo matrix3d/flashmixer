@@ -46,7 +46,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public final class ABCEmitter
+public class ABCEmitter
         implements IABCVisitor
 {
     private static final int VERSION_NONE = -1;
@@ -1116,7 +1116,7 @@ public final class ABCEmitter
     public class EmitterClassVisitor
             implements IClassVisitor, ClassDependencySort.IInstanceInfoProvider
     {
-        ClassInfo classInfo;
+        public ClassInfo classInfo;
         Traits classTraits;
         InstanceInfo instanceInfo;
         Traits instanceTraits;
