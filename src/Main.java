@@ -32,6 +32,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import com.adobe.flash.abc.semantics.ScriptInfo;
 import com.javadocking.DockingManager;
 import com.javadocking.dock.BorderDock;
 import com.javadocking.dock.CompositeLineDock;
@@ -65,9 +66,7 @@ import com.javadocking.model.DockModel;
 import com.javadocking.model.DockModelUtil;
 import com.javadocking.model.DockingPath;
 import com.javadocking.model.FloatDockModel;
-import swftool.ABCEmitter;
-import swftool.CodeView;
-import swftool.SwfTree;
+import swftool.*;
 import com.javadocking.util.LAF;
 import com.javadocking.util.LookAndFeelUtil;
 import com.javadocking.util.SampleComponentFactory;
@@ -75,7 +74,6 @@ import com.javadocking.util.ToolBarButton;
 import com.javadocking.visualizer.DockingMinimizer;
 import com.javadocking.visualizer.FloatExternalizer;
 import com.javadocking.visualizer.SingleMaximizer;
-import swftool.SwfToolUI;
 
 /**
  * In this example graphical components are put in dockables.
@@ -268,8 +266,8 @@ public class Main extends JPanel
             public void valueChanged(TreeSelectionEvent e) {
                 DefaultMutableTreeNode treeNode =(DefaultMutableTreeNode)(e.getPath().getLastPathComponent());
                 System.out.println(treeNode.getUserObject());
-                if(treeNode.getUserObject() instanceof ABCEmitter.EmitterClassVisitor) {
-                    ABCEmitter.EmitterClassVisitor visitor = (ABCEmitter.EmitterClassVisitor) treeNode.getUserObject();
+                if(treeNode.getUserObject() instanceof CodeInfo) {
+                    CodeInfo visitor = (CodeInfo) treeNode.getUserObject();
                     if (visitor != null) {
                         CodeView codeView= new CodeView(visitor);
                         Dockable dockable=createDockable(treeNode.toString(), 	 codeView,      treeNode.toString(),  new ImageIcon(getClass().getResource("/com/javadocking/resources/images/text12.gif")),     "<html>De Bello Gallico: Liber 1<br><i>Gaius Julius Caesar</i><html>");

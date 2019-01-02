@@ -88,6 +88,7 @@ public final class ABCEmitter
     private final ReentrantLock lock;
     private boolean visitEndCalled;
     private final IDiagnosticsVisitor diagnosticsVisitor;
+    public Map<MethodInfo, MethodBodyInfo> methodMap=new HashMap<>();
 
     public byte[] emit()
             throws Exception
@@ -1531,6 +1532,7 @@ public final class ABCEmitter
             }
             if (this.mbi != null)
             {
+                methodMap.put(mbi.getMethodInfo(),mbi);
                 this.mbi.computeFrameCounts(ABCEmitter.this.diagnosticsVisitor);
                 if ((ABCEmitter.this.eagerlyEmitMethodBodies) && (!this.mbi.hasNewclassInstruction())) {
                     try

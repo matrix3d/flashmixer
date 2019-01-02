@@ -218,7 +218,7 @@ public class SwfToolUI extends JPanel {
 
         for(File file:list){
             try{
-                SWFDump.main(new String[]{"-decompile","-abc","-asm",file.getPath()});
+                SWFDump.main(new String[]{"-decompile","-abc",file.getPath()});
             }catch (Exception e){
                 e.printStackTrace();
             }

@@ -1,6 +1,8 @@
 package swftool;
 
 import com.adobe.flash.abc.ABCParser;
+import com.adobe.flash.abc.semantics.ClassInfo;
+import com.adobe.flash.abc.semantics.ScriptInfo;
 import com.adobe.flash.abc.semantics.Trait;
 import com.adobe.flash.swf.Header;
 import com.adobe.flash.swf.SWF;
@@ -99,23 +101,38 @@ public class SwfTree extends JPanel
                                 abcParser.parseABC(abc);
                                 HashMap<String,Object> map=new HashMap<>();
 
-                                for(ABCEmitter.EmitterClassVisitor ci : abc.definedClasses){
-                                    String nsname=ci.instanceInfo.name.getSingleQualifier().getName();
-                                    String cname=ci.instanceInfo.name.getBaseName();
-                                    SWFTreeNode classNode=new SWFTreeNode(null,cname,ci);
-                                    HashMap<String,Object> currentMap=map;
-                                    if(nsname==null){
-
-                                    }else{
-                                        String[] parr= nsname.split("\\.");
-                                        for(String pa:parr){
-                                            if(!currentMap.containsKey(pa)){
-                                                currentMap.put(pa,new HashMap<String,Object>());
+                                for(ScriptInfo ci : abc.scriptInfos){
+                                    for(Trait trait :ci.getTraits()){
+                                        if(trait.isClass()){
+                                            String nsname= trait.getName().getSingleQualifier().getName();
+                                            String cname=trait.getName().getBaseName();
+                                            CodeInfo codeInfo=new CodeInfo();
+                                            codeInfo.abc=abc;
+                                            codeInfo.scriptInfo=ci;
+                                            ClassInfo cii = (ClassInfo)trait.getAttr("class_id");
+                                            for(ABCEmitter.EmitterClassVisitor classVisitor : abc.definedClasses) {
+                                                if (classVisitor.classInfo == cii) {
+                                                    codeInfo.classVisitor=classVisitor;
+                                                    break;
+                                                }
                                             }
-                                            currentMap=(HashMap<String, Object>) currentMap.get(pa);
+                                            SWFTreeNode classNode=new SWFTreeNode(null,cname,codeInfo);
+                                            HashMap<String,Object> currentMap=map;
+                                            if(nsname==null){
+
+                                            }else{
+                                                String[] parr= nsname.split("\\.");
+                                                for(String pa:parr){
+                                                    if(!currentMap.containsKey(pa)){
+                                                        currentMap.put(pa,new HashMap<String,Object>());
+                                                    }
+                                                    currentMap=(HashMap<String, Object>) currentMap.get(pa);
+                                                }
+                                            }
+                                            currentMap.put(cname+".as",classNode);
                                         }
                                     }
-                                    currentMap.put(cname+".as",classNode);
+
                                 }
 
                                 doFile(map,abcnode);
