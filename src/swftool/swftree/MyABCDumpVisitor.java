@@ -121,7 +121,7 @@ public class MyABCDumpVisitor  {
         }
 
         this.writeMetaData(trait);
-        this.printer.print(ABCDumpUtils.nsQualifierForName(trait.getName()),CodeType.Class);
+        this.printer.print(ABCDumpUtils.nsQualifierForName(trait.getName()),CodeType.key);
         printer.print(def,CodeType.key);
         printer.print(" ",CodeType.norm);
         printer.print(ABCDumpUtils.nameToString(trait.getName()),CodeType.Class);
@@ -296,20 +296,25 @@ public class MyABCDumpVisitor  {
             nameStr = methodInfo.getMethodName();
         }
 
-        this.printer.print(qualStr + staticStr,CodeType.Class);
-        this.printer.println(nativeStr + finalStr + overrideStr + kindStr + " " + nameStr + "(" + StringUtils.joinOn(",", paramTypeStrings) + "):" + ABCDumpUtils.nameToString(methodInfo.getReturnType()),CodeType.norm);
+        this.printer.print(qualStr + staticStr,CodeType.key);
+        this.printer.print(nativeStr + finalStr + overrideStr + kindStr + " ",CodeType.key);
+        this.printer.print(nameStr ,CodeType.norm);
+        this.printer.print("(",CodeType.norm) ;
+        this.printer.print(StringUtils.joinOn(",", paramTypeStrings),CodeType.Class);
+        this.printer.print( "):",CodeType.norm);
+        this.printer.println(ABCDumpUtils.nameToString(methodInfo.getReturnType()),CodeType.Class);
         MethodBodyInfo mb = this.getMethodBodyForMethodInfo(methodInfo);
         if (mb != null) {
             this.printer.println("{",CodeType.norm);
             this.printer.indent();
             TablePrinter tablePrinter = new TablePrinter(3, 2);
-            tablePrinter.addRow(new String[]{"//", "derivedName", methodInfo.getMethodName()});
+            tablePrinter.addRow(new String[]{"//", "derivedName", methodInfo.getMethodName()},CodeType.comment);
             //tablePrinter.addRow(new String[]{"//", "method_info", String.valueOf(this.getMethodInfos().getId(mb.getMethodInfo()))});
-            tablePrinter.addRow(new String[]{"//", "max_stack", String.valueOf(mb.max_stack)});
-            tablePrinter.addRow(new String[]{"//", "max_regs", String.valueOf(mb.max_local)});
-            tablePrinter.addRow(new String[]{"//", "scope_depth", String.valueOf(mb.initial_scope)});
-            tablePrinter.addRow(new String[]{"//", "max_scope", String.valueOf(mb.max_scope)});
-            tablePrinter.addRow(new String[]{"//", "code_length", String.valueOf(mb.code_len)});
+            tablePrinter.addRow(new String[]{"//", "max_stack", String.valueOf(mb.max_stack)},CodeType.comment);
+            tablePrinter.addRow(new String[]{"//", "max_regs", String.valueOf(mb.max_local)},CodeType.comment);
+            tablePrinter.addRow(new String[]{"//", "scope_depth", String.valueOf(mb.initial_scope)},CodeType.comment);
+            tablePrinter.addRow(new String[]{"//", "max_scope", String.valueOf(mb.max_scope)},CodeType.comment);
+            tablePrinter.addRow(new String[]{"//", "code_length", String.valueOf(mb.code_len)},CodeType.comment);
             tablePrinter.print(this.printer);
             if (mb.getTraits() != null && mb.getTraits().getTraitCount() > 0) {
                 this.printer.println("activation_traits {",CodeType.norm);
@@ -366,7 +371,12 @@ public class MyABCDumpVisitor  {
                 for(int j = 0; j < block.size(); ++j) {
                     Instruction inst = block.get(j);
                     String constantStr = "";
-                    if (inst.hasOperands() && inst.getOperand(0) instanceof Name) {
+                    if(j==6){
+                        //System.out.println(inst.hasOperands());
+                        //S/ystem.out.println(inst.getOperand(0) instanceof Name);
+                        //System.out.println(1);
+                    }
+                    if (inst.getOperandCount()>0 && inst.getOperand(0) instanceof Name) {
                         constantStr = ABCDumpUtils.nameToString((Name)inst.getOperand(0));
                     } else if (inst.isBranch() && inst.getOpcode() != 27) {
                         constantStr = (String)blockNames.get(cfg.getBlock((Label)inst.getOperand(0)));
@@ -384,7 +394,7 @@ public class MyABCDumpVisitor  {
                         }
                     }
 
-                    tablePrinter.addRow(new String[]{offset + "    ", Instruction.decodeOp(inst.getOpcode()), constantStr, inst.isImmediate() ? String.valueOf(inst.getImmediate()) : ""});
+                    tablePrinter.addRow(new String[]{offset + "    ", Instruction.decodeOp(inst.getOpcode()), constantStr, inst.isImmediate() ? String.valueOf(inst.getImmediate()) : ""},CodeType.norm);
                     ++offset;
                 }
 
@@ -396,11 +406,11 @@ public class MyABCDumpVisitor  {
             this.printer.println("}",CodeType.norm);
             if (mb.getExceptions().size() > 0) {
                 tablePrinter = new TablePrinter(7, 2);
-                tablePrinter.addRow(new String[]{"//", "exception", "start", "end", "target", "type string", "name string"});
+                tablePrinter.addRow(new String[]{"//", "exception", "start", "end", "target", "type string", "name string"},CodeType.comment);
 
                 for(i = 0; i < mb.getExceptions().size(); ++i) {
                     ExceptionInfo exception = (ExceptionInfo)mb.getExceptions().get(i);
-                    tablePrinter.addRow(new String[]{"//", String.valueOf(i), String.valueOf(exception.getFrom().getPosition()), String.valueOf(exception.getTo().getPosition()), String.valueOf(exception.getTarget().getPosition()), ABCDumpUtils.nameToString(exception.getExceptionType()), ABCDumpUtils.nameToString(exception.getCatchVar())});
+                    tablePrinter.addRow(new String[]{"//", String.valueOf(i), String.valueOf(exception.getFrom().getPosition()), String.valueOf(exception.getTo().getPosition()), String.valueOf(exception.getTarget().getPosition()), ABCDumpUtils.nameToString(exception.getExceptionType()), ABCDumpUtils.nameToString(exception.getCatchVar())},CodeType.norm);
                 }
 
                 tablePrinter.print(this.printer);
@@ -420,11 +430,11 @@ public class MyABCDumpVisitor  {
             this.m_rows = new Vector();
         }
 
-        public void addRow(String[] r) {
+        public void addRow(String[] r,int type) {
             if (r.length != this.cols) {
                 throw new Error("Invalid row");
             } else {
-                this.m_rows.add(new Row(r));
+                this.m_rows.add(new Row(r,type));
             }
         }
 
@@ -454,9 +464,10 @@ public class MyABCDumpVisitor  {
 
         private class Row {
             private String[] cells;
-
-            public Row(String[] cells) {
+            private int type;
+            public Row(String[] cells,int type) {
                 this.cells = cells;
+                this.type=type;
             }
 
             public void measure(int[] colWidths, int minPadding) {
@@ -470,10 +481,11 @@ public class MyABCDumpVisitor  {
                 String rowStr = "";
 
                 for(int i = 0; i < this.cells.length; ++i) {
+                    int colW=colWidths[i];
                     rowStr = rowStr + this.padString(this.getRowItemStr(i), colWidths[i]);
                 }
 
-                p.println(rowStr,CodeType.norm);
+                p.println(rowStr,type);
             }
 
             private String getRowItemStr(int i) {
@@ -503,22 +515,30 @@ public class MyABCDumpVisitor  {
             value = t.getAttr("value");
         }
 
-        String valueStr = "";
-        if (value instanceof String) {
-            valueStr = " = \"" + value + "\"";
-        } else if (value instanceof Namespace) {
-            valueStr = " = " + ((Namespace)value).getName();
-        } else if (value == ABCConstants.NULL_VALUE) {
-            valueStr = " = null";
-        } else if (value == ABCConstants.UNDEFINED_VALUE) {
-            valueStr = "";
-        } else if (value != null) {
-            valueStr = " = " + value.toString();
-        }
-
         String staticStr = isStatic ? "static " : "";
         this.writeMetaData(t);
-        this.printer.println(qual + staticStr + kindStr + " " + nameStr + ":" + ABCDumpUtils.nameToString((Name)t.getAttr("type")) + valueStr,CodeType.norm);
+        this.printer.print(qual + staticStr + kindStr,CodeType.key);
+        this.printer.print(         " " + nameStr + ":" ,CodeType.norm);
+        this.printer.print(                ABCDumpUtils.nameToString((Name)t.getAttr("type")) ,CodeType.Class);
+        //String valueStr = "";
+        if (value instanceof String) {
+            this.printer.print(" = ",CodeType.norm);
+            this.printer.print("\"" + value + "\"",CodeType.str);
+            //valueStr = " = \"" + value + "\"";
+        } else if (value instanceof Namespace) {
+            this.printer.print(" = ",CodeType.norm);
+            this.printer.print(((Namespace)value).getName(),CodeType.Class);
+            //valueStr = " = " + ((Namespace)value).getName();
+        } else if (value == ABCConstants.NULL_VALUE) {
+            this.printer.print(" = ",CodeType.norm);
+            this.printer.print("null",CodeType.key);
+            //valueStr = " = null";
+        } else if (value == ABCConstants.UNDEFINED_VALUE) {
+            //valueStr = "";
+        } else if (value != null) {
+            this.printer.print(" = " + value.toString(),CodeType.norm);
+        }
+        this.printer.println("",CodeType.norm);
     }
 
     private void writeMetaData(Trait t) {
