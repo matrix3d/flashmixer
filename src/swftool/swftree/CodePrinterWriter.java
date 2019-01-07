@@ -18,7 +18,7 @@ public class CodePrinterWriter {
         integerColorHashMap.put(CodeType.key,Color.blue);
         integerColorHashMap.put(CodeType.norm,Color.black);
         integerColorHashMap.put(CodeType.Class,new Color(0,0x80,0xaa));
-        integerColorHashMap.put(CodeType.comment,Color.gray);
+        integerColorHashMap.put(CodeType.comment,new Color(0,0x80,0));
         integerColorHashMap.put(CodeType.str,new Color(0xa3,0x15,0x15));
     }
     public void print(String string,int type){

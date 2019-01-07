@@ -29,7 +29,9 @@ public class CodeView extends JPanel {
             //String contents = buffer.toString();
             //writer.close();
             //appendToPane(area,contents,Color.red);
-            add(new JScrollPane(tp),BorderLayout.CENTER);
+            JScrollPane jScrollPane=new JScrollPane(tp);
+            jScrollPane.getVerticalScrollBar().setUnitIncrement(12);
+            add(jScrollPane,BorderLayout.CENTER);
         }catch (Exception e){
 
         }

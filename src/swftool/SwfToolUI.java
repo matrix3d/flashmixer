@@ -1,5 +1,9 @@
 package swftool;
 
+import antlr.TokenBuffer;
+import com.adobe.flash.compiler.clients.MXMLC;
+import com.adobe.flash.compiler.filespecs.FileSpecification;
+import com.adobe.flash.compiler.internal.parsing.as.ASParser;
 import com.adobe.flash.swf.Header;
 import com.adobe.flash.swf.SWF;
 import com.adobe.flash.swf.io.SWFDump;
@@ -8,6 +12,7 @@ import com.adobe.flash.swf.io.SWFWriter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.layout.VBox;
+import swftool.build.Builder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +24,7 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Properties;
 
 import static javax.swing.JOptionPane.*;
 
@@ -59,6 +65,9 @@ public class SwfToolUI extends JPanel {
         JButton btn3=new JButton("dump swf");
         btn3.setPreferredSize(new Dimension(100,100));
         add(btn3);
+        JButton btn4=new JButton("build swf");
+        btn4.setPreferredSize(new Dimension(100,100));
+        add(btn4);
 
         new DropTarget(btn1, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
             @Override
@@ -105,6 +114,24 @@ public class SwfToolUI extends JPanel {
                         dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
                         java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
                         dump(list);
+                        dtde.dropComplete(true);
+                    }else{
+                        dtde.rejectDrop();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+        });
+
+        new DropTarget(btn4, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
+            @Override
+            public void drop(DropTargetDropEvent dtde) {
+                try{
+                    if(dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+                        dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
+                        java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
+                        build(list);
                         dtde.dropComplete(true);
                     }else{
                         dtde.rejectDrop();
@@ -222,6 +249,13 @@ public class SwfToolUI extends JPanel {
             }catch (Exception e){
                 e.printStackTrace();
             }
+
+        }
+        //showMessageDialog(null,"over");
+    }
+    private void build(java.util.List<File> list){
+        for(File file:list){
+            new Builder(file);
 
         }
         //showMessageDialog(null,"over");
