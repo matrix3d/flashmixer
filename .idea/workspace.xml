@@ -7,22 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07a837b1-26ce-4ac0-a247-22fd5a508517" name="Default Changelist" comment="dddd">
-      <change afterPath="$PROJECT_DIR$/src/swftool/SWFTreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swftool/SwfTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swftool/SwfTreeModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/res/words.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asc2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/asc2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/ContactTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/DeBelloGallico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/DragProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/Find.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/Picture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/SmallPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/Table.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/TextEditor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javadocking/util/WordList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swftool/Mixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swftool/Mixer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swftool/SwfToolUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swftool/SwfToolUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swftool/build/MyASCompilationUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swftool/build/MyASCompilationUnit.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,14 +26,21 @@
     <session id="772004992">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -52,7 +50,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11048" />
+          <entry key="CLASS" value="12" />
+          <entry key="JAVA" value="18487" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -65,125 +64,103 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="156" />
-          <entry key="JAVA" value="113" />
+          <entry key="CLASS" value="405" />
+          <entry key="JAVA" value="213" />
           <entry key="Manifest" value="2" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.41651598">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/swftool/SwfToolUI.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="93">
-                  <caret line="191" column="15" lean-forward="true" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="15" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4342">
-                  <caret line="752" column="43" selection-start-line="752" selection-start-column="43" selection-end-line="752" selection-end-column="43" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#43869#43870#0" expanded="true" />
-                    <element signature="e#43892#43893#0" expanded="true" />
-                    <element signature="e#27115#27116#0" expanded="true" />
-                    <element signature="e#27165#27166#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/swftool/SwfTree.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/tree/DefaultTreeModel.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="113">
-                  <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JScrollPane.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="441" selection-start-line="441" selection-end-line="441" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/SWF.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="224">
-                  <caret line="28" column="41" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="41" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/swftool/SwfTreeModel.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="23">
-                  <caret line="38" column="85" selection-start-line="38" selection-start-column="85" selection-end-line="38" selection-end-column="85" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#242#243#0" expanded="true" />
-                    <element signature="e#265#266#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/swftool/SWFTreeNode.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="191">
-                  <caret line="18" column="72" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#471#472#0" expanded="true" />
-                    <element signature="e#510#511#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/tree/DefaultMutableTreeNode.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-588">
-                  <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swftool/SwfToolUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="174" column="33" selection-start-line="174" selection-start-column="33" selection-end-line="174" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/swftool/Mixer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="303" column="46" selection-start-line="303" selection-start-column="46" selection-end-line="303" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/StringReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1575">
+              <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/res/words.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="793" column="36" selection-start-line="793" selection-start-column="33" selection-end-line="793" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLClassLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="721">
+              <caret line="378" column="9" lean-forward="true" selection-start-line="378" selection-start-column="9" selection-end-line="378" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/regex/Matcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="879" selection-start-line="879" selection-end-line="879" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="1696" column="15" selection-start-line="1696" selection-start-column="15" selection-end-line="1696" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#66457#66458#0" expanded="true" />
+                <element signature="e#66495#66496#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -194,36 +171,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>init</find>
-      <find>writeto</find>
-      <find>findabc</find>
-      <find>public IMetadataVisitor visitMetadata</find>
-      <find>com.adobe.flash.abc</find>
-      <find>get(</find>
-      <find>nomixMap</find>
-      <find>(1)</find>
-      <find>syms</find>
-      <find>getframes</find>
-      <find>findABCMethodBodies</find>
-      <find>new text</find>
-      <find>allowBadJumps</find>
-      <find>methodbodi</find>
-      <find>pushst</find>
-      <find>eagerlyEmitMethodBodies</find>
-      <find>system.out</find>
-      <find>Error</find>
-      <find>over</find>
-      <find>readDoABC</find>
-      <find>old</find>
-      <find>var</find>
-      <find>doabc</find>
-      <find>getKind</find>
-      <find>ismixvar</find>
-      <find>index</find>
-      <find>float</find>
-      <find>dockables[</find>
-      <find>jframe</find>
+      <find>tableprinter.pri</find>
+      <find>traverseInstanceSlotTrait</find>
+      <find>methodMap</find>
+      <find>indent</find>
+      <find>print(</find>
+      <find>println</find>
+      <find>&quot;(&quot;</find>
+      <find>flex</find>
+      <find>flexlib</find>
+      <find>config</find>
+      <find>target</find>
+      <find>=</find>
+      <find>target =</find>
+      <find>setupTargetFile</find>
+      <find>build</find>
+      <find>build(</find>
+      <find>REQUIRED_BUILTINS</find>
+      <find>sourceCompilationUnitFactory</find>
+      <find>sourcePathManager</find>
+      <find>SourceListManager</find>
+      <find>libraryPathManager</find>
+      <find>createInvisibleCompilationUnit</find>
+      <find>getSyntaxTreeRequest</find>
+      <find>mix_</find>
+      <find>getMixCharacter</find>
+      <find>public static void m</find>
+      <find>new mix</find>
+      <find>morn</find>
+      <find>nomixMap2</find>
+      <find>nomixPackMap</find>
     </findStrings>
+    <dirStrings>
+      <dir>D:\sdk\AIRSDK_Compiler30\lib\compiler.jar</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -234,27 +215,59 @@
         <option value="$PROJECT_DIR$/src/swftool/MyVisitor.java" />
         <option value="$PROJECT_DIR$/src/com/adobe/flash/abc/ABCPoolEmitter.java" />
         <option value="$PROJECT_DIR$/src/swftool/PoolingABCEmitter.java" />
-        <option value="$PROJECT_DIR$/src/swftool/Test.java" />
-        <option value="$PROJECT_DIR$/src/swftool/ABCEmitter.java" />
-        <option value="$PROJECT_DIR$/src/swftool/Mixer.java" />
         <option value="$PROJECT_DIR$/src/com/javadocking/emptydock/EmptyDock.java" />
         <option value="$PROJECT_DIR$/src/com/javadocking/util/LAF.java" />
         <option value="$PROJECT_DIR$/src/MainExample.java" />
-        <option value="$PROJECT_DIR$/src/swftool/SwfToolUI.java" />
         <option value="$PROJECT_DIR$/src/com/javadocking/util/ContactTree.java" />
         <option value="$PROJECT_DIR$/src/swftool/ContactTree.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/swftool/FrameTreeNode.java" />
         <option value="$PROJECT_DIR$/src/swftool/SWFTreeNode.java" />
         <option value="$PROJECT_DIR$/src/swftool/SwfTreeModel.java" />
+        <option value="$PROJECT_DIR$/src/swftool/CodeView.java" />
+        <option value="$PROJECT_DIR$/src/swftool/CodeInfo.java" />
+        <option value="$PROJECT_DIR$/src/swftool/MyABCDumpVisitor.java" />
         <option value="$PROJECT_DIR$/src/swftool/SwfTree.java" />
+        <option value="$PROJECT_DIR$/src/swftool/swftree/SwfTree.java" />
+        <option value="$PROJECT_DIR$/src/swftool/ABCEmitter.java" />
+        <option value="$PROJECT_DIR$/src/swftool/swftree/CodeType.java" />
+        <option value="$PROJECT_DIR$/src/swftool/swftree/MyABCDumpVisitor.java" />
+        <option value="$PROJECT_DIR$/src/swftool/swftree/CodePrinterWriter.java" />
+        <option value="$PROJECT_DIR$/src/swftool/Test.java" />
+        <option value="$PROJECT_DIR$/src/Main2.java" />
+        <option value="$PROJECT_DIR$/src/swftool/swftree/CodeView.java" />
+        <option value="$PROJECT_DIR$/src/swftool/build/MySWFTarget.java" />
+        <option value="$PROJECT_DIR$/src/com/adobe/flash/compiler/internal/targets/MySWFTarget.java" />
+        <option value="$PROJECT_DIR$/src/swftool/build/MySourceCompilationUnitFactory.java" />
+        <option value="$PROJECT_DIR$/src/swftool/build/MyASSourceFileHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/adobe/flash/compiler/internal/projects/MyFlexProject.java" />
+        <option value="$PROJECT_DIR$/src/swftool/build/MyFlexProject.java" />
+        <option value="$PROJECT_DIR$/src/swftool/build/Builder.java" />
+        <option value="$PROJECT_DIR$/src/swftool/build/MyASCompilationUnit.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/swftool/SwfToolUI.java" />
+        <option value="$PROJECT_DIR$/src/swftool/Mixer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="725" />
-    <option name="y" value="118" />
-    <option name="width" value="1113" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="438" />
+    <option name="y" value="-14" />
+    <option name="width" value="947" />
+    <option name="height" value="901" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -264,8 +277,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,44 +300,48 @@
             <path>
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
               <item name="asc2" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asc2" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asc2" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="asc2_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asc2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
               <item name="asc2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="javadocking" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
               <item name="asc2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="javadocking" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asc2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="targets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
               <item name="asc2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="swftool" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asc2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="swftool" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asc2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="swftool" type="462c0819:PsiDirectoryNode" />
+              <item name="swftree" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
@@ -341,27 +358,27 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="asc2" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546001042554" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/javadocking.jar!/" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553150111572" />
+    <property name="last_opened_file_path" value="D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\li456\IdeaProjects\asc2\src" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\lib" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\assets\res" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\assets\assets" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\assets" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\li456\IdeaProjects\asc2\assets\res" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\assets" />
       <recent name="C:\Users\li456\IdeaProjects\asc2" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\src" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\src\swftool" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\li456\IdeaProjects\asc2\assets\res" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\src" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\lib" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\assets\assets" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\assets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -380,7 +397,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="asc2" />
-      <option name="VM_PARAMETERS" value="-Dfile.encoding=gb2312 -Dflexlib=D:\sdk\AIRSDK_Compiler30\frameworks" />
+      <option name="VM_PARAMETERS" value="-Dfile.encoding=gb2312" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -431,10 +448,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="920" y="106" width="1113" height="900" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20607787" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17604166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -442,16 +459,16 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.26837417" />
-      <window_info anchor="bottom" x="3" y="389" width="1876" height="253" id="Run" order="2" weight="0.29784366" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.5336927" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.39165545" />
+      <window_info anchor="bottom" x="3" y="389" width="1876" height="253" id="Run" order="2" weight="0.29411766" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.2804348" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962137" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962137" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.2583519" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.17483296" />
       <window_info anchor="bottom" id="Dependency Viewer" order="11" weight="0.51224947" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.50765866" />
@@ -485,6 +502,36 @@
           <properties class="com.adobe.flash.abc.semantics.MethodBodyInfo" package="com.adobe.flash.abc.semantics" />
           <option name="timeStamp" value="56" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/ASCompilationUnit.class</url>
+          <line>228</line>
+          <properties />
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/ASCompilationUnit.class</url>
+          <line>244</line>
+          <properties />
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/ASCompilationUnit.class</url>
+          <line>161</line>
+          <properties />
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/ASCompilationUnit.class</url>
+          <line>110</line>
+          <properties />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/parsing/as/BaseASParser.class</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="208" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -495,390 +542,194 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>&quot;Main2&quot;.equals(name)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;Main1&quot;.equals(name)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;Object&quot;.equals(name)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;Object&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>name == &quot;Object&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>name==&quot;Object&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>name==&quot;Main1&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>name==&quot;Main2&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/io/SWFWriter.class">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/as/codegen/DirectiveProcessor.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/targets/SWFTarget.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/requests/ABCBytesRequestResult.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/tags/DoABCTag.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/FlexProject.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/as/codegen/ABCGenerator.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/config/Configurator.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/SourceCompilationUnitFactory.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/ASSourceFileHandler.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/SourcePathManager.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/ISourceFileHandler.class" />
+    <entry file="file://$PROJECT_DIR$/src/swftool/build/MyFlexProject.java" />
+    <entry file="file://$PROJECT_DIR$/src/swftool/build/MySourceCompilationUnitFactory.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/adobe/flash/compiler/internal/targets/MySWFTarget.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="2216" column="34" lean-forward="true" selection-start-line="2216" selection-start-column="34" selection-end-line="2216" selection-end-column="34" />
+        <state relative-caret-position="360">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/ByteArrayOutputStream.java">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/ClassNode.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/ExpressionNodeBase.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/units/requests/ISyntaxTreeRequestResult.class" />
+    <entry file="file://$PROJECT_DIR$/src/swftool/build/MyASSourceFileHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        <state relative-caret-position="300">
+          <caret line="27" column="107" selection-start-line="27" selection-start-column="107" selection-end-line="27" selection-end-column="107" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/TagType.class">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/units/ICompilationUnit.class" />
+    <entry file="file://$PROJECT_DIR$/src/swftool/build/Builder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
+        <state relative-caret-position="195">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/io/SWFReader.class">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/requests/SyntaxTreeRequestResult.class" />
+    <entry file="file://$PROJECT_DIR$/src/swftool/build/MyASCompilationUnit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="1285" column="18" selection-start-line="1285" selection-start-column="13" selection-end-line="1285" selection-end-column="18" />
+        <state relative-caret-position="102">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/aglj40.jar!/com/adobe/agl/charset/CharsetASCII.class">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/CompilerProject.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/parsing/as/ASParser.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/antlr.jar!/antlr/Parser.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/antlr.jar!/antlr/LLkParser.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/FileNode.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/ScopedBlockNode.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/BlockNode.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/ContainerNode.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/TreeNode.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/common/SourceLocation.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/ASCompilationUnit.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/CompilationUnitBase.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/ASProject.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/projects/SourceListManager.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/clients/MXMLC.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/units/requests/RequestMaker.class" />
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/tree/as/NodeBase.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/concurrent/FutureTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2394">
-          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        <state relative-caret-position="1470">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/commons-io-2.0.1.jar!/org/apache/commons/io/comparator/PathFileComparator.class">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/concurrent/AbstractExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="1455">
+          <caret line="132" selection-start-line="132" selection-end-line="132" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/guava-r08.jar!/com/google/common/io/Files.class">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/parsing/as/BaseASParser.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/regex/Matcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        <state relative-caret-position="203">
+          <caret line="879" selection-start-line="879" selection-end-line="879" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/rideau.jar!/com/adobe/internal/io/FileUtility.class">
+    <entry file="file://$PROJECT_DIR$/src/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/compiler/internal/parsing/as/ASParser.class">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2436">
-          <caret line="98" column="13" selection-start-line="98" selection-start-column="13" selection-end-line="98" selection-end-column="13" />
+        <state relative-caret-position="338">
+          <caret line="1696" column="15" selection-start-line="1696" selection-start-column="15" selection-end-line="1696" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#66457#66458#0" expanded="true" />
+            <element signature="e#66495#66496#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/antlr.jar!/antlr/actions/cpp/ActionLexerTokenTypes.class">
+    <entry file="file://$PROJECT_DIR$/assets/res/words.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        <state relative-caret-position="75">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/antlr.jar!/antlr/actions/cpp/ActionLexer.class">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/StringReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/semantics/Namespace.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="61" column="29" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/ClassDependencySort.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="29" column="39" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/io/SWFDump.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21994">
-          <caret line="1716" selection-start-line="1716" selection-end-line="1716" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/print/ABCDumpVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="826">
-          <caret line="96" column="45" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/semantics/Trait.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/semantics/Name.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="234" column="84" selection-start-line="234" selection-start-column="84" selection-end-line="234" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/ABCParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="220" selection-start-line="220" selection-end-line="220" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/abc/Pool.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="556" selection-start-line="556" selection-end-line="556" />
+        <state relative-caret-position="-1575">
+          <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="380" selection-start-line="380" selection-end-line="380" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/Mixer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="257" column="78" selection-start-line="257" selection-start-column="78" selection-end-line="257" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/emptydock/EmptyDock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-916">
-          <caret line="180" column="8" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/javadocking/samples/javadocking/util/Book.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/Chart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="23" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javadocking.jar!/com/javadocking/model/FloatDockModel.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-371">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-          <folding>
-            <element signature="e#715#716#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="721">
+          <caret line="378" column="9" lean-forward="true" selection-start-line="378" selection-start-column="9" selection-end-line="378" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JMenuItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="306" column="16" selection-start-line="306" selection-start-column="16" selection-end-line="306" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/LAF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/WordList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/Picture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/DeBelloGallico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/SampleComponentFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/SmallPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/TextEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/DragProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/ABCEmitter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6879">
-          <caret line="1032" selection-start-line="1032" selection-end-line="1032" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javadocking/util/ToolBarButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JScrollPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="441" selection-start-line="441" selection-end-line="441" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/tree/TreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/tree/MutableTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/tree/DefaultTreeModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/tree/DefaultMutableTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
+        <state relative-caret-position="342">
+          <caret line="793" column="36" selection-start-line="793" selection-start-column="33" selection-end-line="793" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/swftool/SwfToolUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="191" column="15" lean-forward="true" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="194">
+          <caret line="174" column="33" selection-start-line="174" selection-start-column="33" selection-end-line="174" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/SWFTreeNode.java">
+    <entry file="file://$PROJECT_DIR$/src/swftool/Mixer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="18" column="72" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler30/lib/compiler.jar!/com/adobe/flash/swf/SWF.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="28" column="41" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/SwfTreeModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="38" column="85" selection-start-line="38" selection-start-column="85" selection-end-line="38" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#242#243#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4342">
-          <caret line="752" column="43" selection-start-line="752" selection-start-column="43" selection-end-line="752" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#43869#43870#0" expanded="true" />
-            <element signature="e#43892#43893#0" expanded="true" />
-            <element signature="e#27115#27116#0" expanded="true" />
-            <element signature="e#27165#27166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/SwfTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+        <state relative-caret-position="239">
+          <caret line="303" column="46" selection-start-line="303" selection-start-column="46" selection-end-line="303" selection-end-column="46" />
         </state>
       </provider>
     </entry>

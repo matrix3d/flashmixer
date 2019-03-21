@@ -15,6 +15,7 @@ import com.adobe.flash.swf.tags.ITag;
 import com.adobe.flash.swf.tags.SymbolClassTag;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sun.org.apache.xerces.internal.xs.StringList;
 
 import javax.swing.*;
 import java.io.*;
@@ -35,11 +36,13 @@ public class Mixer
     private int charSetLength;
     public HashSet<String> stringMap;//=new HashMap<String,Boolean>();
     public Map<String,String> mixedMap;
+    public Map<String,String> reservedStructureMap;
     private Set<String> nomixMap;
     private Set<String> nomixMap2;
     private Set<String> nomixStartsMap;
     private Set<String> nomixPackMap;
     private Set<String> waitMixs;
+    private List<String> words;
     public Byte[] newbyte;
     private List<DoABCTag> abcs;
     private List syms;
@@ -53,8 +56,10 @@ public class Mixer
     private Map<String,String> mixMap;
     private boolean atenable;
     private boolean hasAt;
+    private boolean reservedStructure;
     private String mixcode;
-    public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode)
+    private String[] nomixpack;
+    public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode,boolean reservedStructure,String noMixPackStr)
     {
         this.mixMap = mixMap;
         this.isMixPackage = isMixPackage;
@@ -62,6 +67,7 @@ public class Mixer
         this.isMixVar=isMixVar;
         this.isMixFunc=isMixFunc;
         this.mixcode=mixcode;
+        this.reservedStructure=reservedStructure;
 
         long time=System.currentTimeMillis();
         System.out.println("start gson"+time);
@@ -75,6 +81,35 @@ public class Mixer
             e.printStackTrace();
             nomixMap=new HashSet<>();
         }
+        try{
+            ois=new InputStreamReader(this.getClass().getResourceAsStream("/res/words.txt"));
+            BufferedReader inputStream=new BufferedReader(ois);
+            String line=null;
+            words= new ArrayList();
+            while (true){
+                line=inputStream.readLine();
+                if(line==null){
+                    break;
+                }
+                if(line.matches("[A-Za-z]+")){
+                    words.add(line);
+                }
+            }
+            inputStream.close();
+            ois.close();
+        }catch (Exception e){
+            e.printStackTrace();
+            nomixMap=new HashSet<>();
+        }
+
+        if(noMixPackStr.length()>0){
+            if(noMixPackStr.indexOf(",")==-1){
+                nomixpack=new String[]{noMixPackStr};
+            }else {
+                nomixpack=noMixPackStr.split(",");
+            }
+        }
+
         System.out.println(System.currentTimeMillis()-time);
         time=System.currentTimeMillis();
         System.out.println("start reset"+time);
@@ -125,6 +160,7 @@ public class Mixer
         abcs = new ArrayList();
         syms = new ArrayList();
         mixedMap = new HashMap<>();
+        reservedStructureMap = new HashMap<>();
         nomixPackMap = new HashSet<>();
         characterIndex = 0;
         List<String> arr = new ArrayList();
@@ -259,6 +295,17 @@ public class Mixer
                 mixVarAndFun=false;
             }
 
+            if(nomixpack.length>0&&nsname!=null){
+                for(String s : nomixpack){
+                    if(nsname.indexOf(s)==0){
+                        nomixMap2.add(cname);
+                        nomixMap2.add(nsname);
+                        break;
+                    }
+                }
+            }
+
+
             if (nomixPackMap.contains(nsname)){
                 nomixMap2.add(cname);
                 nomixMap2.add(nsname);
@@ -390,7 +437,34 @@ public class Mixer
         if (mixedMap.get(source)!=null){
             return mixedMap.get(source);
         }
+        if(reservedStructureMap.get(source)!=null){
+            return reservedStructureMap.get(source);
+        }
+        String r=null;
+        if(source.indexOf(".")==-1||!reservedStructure){
+            r = getRandomText(source);
+        }else{
+            String[] arr = source.split("\\.");
+            for(int i=0;i<arr.length;i++){
+                if(nomixMap.contains(arr[i])||nomixMap2.contains(arr[i])){
+                    continue;
+                }
+                String s=reservedStructureMap.get(arr[i]);
+                if(s==null){
+                    s=mixedMap.get(arr[i]);
+                }
+                if(s==null){
+                    s=getRandomText(arr[i]);
+                    reservedStructureMap.put(arr[i],s);
+                    arr[i]=s;
+                }
+            }
+            r=String.join(".",arr);
+        }
+        return r;
+    }
 
+    private String getRandomText(String source){
         String r = "";
         int i = characterIndex;
         do {
@@ -399,9 +473,17 @@ public class Mixer
         }while (i > 0);
 
         characterIndex++;
-
-        return mixcode.replace("[___mix___]",r).replace("[___source___]",source);
+        return mixcode.replace("#",getRandomWord()).replace("@",source).replace("*",r);
     }
 
+    private String getRandomWord(){
+        //不能包含在现有的strings中 不能包含已经随机到的word中，只包含英文
+        while (true){
+            String s= words.remove((int)(Math.random()*words.size()));
+            if(!stringMap.contains(s)){
+                return s;
+            }
+        }
+    }
 }
 

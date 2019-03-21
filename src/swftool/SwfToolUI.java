@@ -35,7 +35,9 @@ public class SwfToolUI extends JPanel {
     JCheckBox negMixmap;
     JCheckBox mixvar;
     JCheckBox mixfunc;
+    JCheckBox reservedStructure;
     JTextField mixcode;
+    JTextField nomixpack;
     public SwfToolUI(){
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
@@ -52,8 +54,12 @@ public class SwfToolUI extends JPanel {
         add(mixvar);
          mixfunc=new JCheckBox("mixfunc",true);
         add(mixfunc);
-         mixcode=new JTextField("[___mix___]");
+        reservedStructure=new JCheckBox("Reserved structure",true);
+        add(reservedStructure);
+         mixcode=new JTextField("*");
         add(mixcode);
+        nomixpack=new JTextField("morn.core.components");
+        add(nomixpack);
 
         JButton btn1=new JButton("lzma swf");
         btn1.setPreferredSize(new Dimension(100,100));
@@ -166,7 +172,7 @@ public class SwfToolUI extends JPanel {
                 //e.printStackTrace();
             }
 
-            Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText());
+            Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText(),reservedStructure.isSelected(),nomixpack.getText());
            long time=System.currentTimeMillis();
             System.out.println("start writeswf"+time);
             SWFWriter writer=new SWFWriter(mixer.outswf,mixer.outswf.getHeader().getCompression());

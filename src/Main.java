@@ -791,6 +791,8 @@ public class Main extends JPanel
 
 	public static void main(String args[]) 
 	{
+	    System.out.println("aa1".matches("[A-Za-z]+"));
+        System.out.println("*ad*".replace("*","__"));
         Runnable doCreateAndShowGUI = new Runnable() 
         {
             public void run() 
