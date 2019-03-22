@@ -28,7 +28,7 @@ public class Builder extends MXMLC{
     public Builder(File file) {
         this.project.getSourceCompilationUnitFactory().addHandler(MyASSourceFileHandler.INSTANCE);// = new MyFlexProject(this.workspace);
         System.setProperty("file.encoding","gb2312");
-        System.setProperty("flexlib","D:\\sdk\\AIRSDK_Compiler30\\frameworks");
+        System.setProperty("flexlib","D:\\sdk\\AIRSDK_Compiler31\\frameworks");
         Properties properties = System.getProperties();
         try{
             //MXMLC mxmlc=new MXMLC();

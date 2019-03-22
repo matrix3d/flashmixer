@@ -1031,10 +1031,17 @@ public class ABCEmitter
 
         assertLockHeld();
 
-        this.namePool.add(n);
+
         if (null == n) {
             return;
         }
+        try{
+            n.hashCode();
+        }catch (Exception e){
+            e.printStackTrace();
+            return;
+        }
+        this.namePool.add(n);
         int kind = n.getKind();
         if (kind != 29)
         {

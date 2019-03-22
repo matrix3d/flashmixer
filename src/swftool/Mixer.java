@@ -86,13 +86,15 @@ public class Mixer
             BufferedReader inputStream=new BufferedReader(ois);
             String line=null;
             words= new ArrayList();
+            HashSet<String> wordsset=new HashSet<>();
             while (true){
                 line=inputStream.readLine();
                 if(line==null){
                     break;
                 }
-                if(line.matches("[A-Za-z]+")){
+                if(line.matches("[A-Za-z]+")&&!wordsset.contains(line)){
                     words.add(line);
+                    wordsset.add(line);
                 }
             }
             inputStream.close();
@@ -477,10 +479,21 @@ public class Mixer
     }
 
     private String getRandomWord(){
+        String s1=getRandomWord1();
+        int l=(int)(Math.random()*2)+1;
+        for(int i=0;i<l;i++){
+            String s=getRandomWord1();
+            s1+=s.substring(0,1).toUpperCase();
+            s1+=s.substring(1);
+        }
+        return  s1;
+    }
+
+    private String getRandomWord1(){
         //不能包含在现有的strings中 不能包含已经随机到的word中，只包含英文
         while (true){
             String s= words.remove((int)(Math.random()*words.size()));
-            if(!stringMap.contains(s)){
+            if(!stringMap.contains(s)&&s.length()>2){
                 return s;
             }
         }
