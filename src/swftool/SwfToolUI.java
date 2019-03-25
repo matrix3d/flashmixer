@@ -3,11 +3,14 @@ package swftool;
 import antlr.TokenBuffer;
 import com.adobe.flash.abc.ABCLinker;
 import com.adobe.flash.abc.ABCParser;
+import com.adobe.flash.compiler.clients.COMPC;
 import com.adobe.flash.compiler.clients.MXMLC;
+import com.adobe.flash.compiler.common.DependencyType;
 import com.adobe.flash.compiler.filespecs.FileSpecification;
 import com.adobe.flash.compiler.internal.parsing.as.ASParser;
 import com.adobe.flash.swc.*;
 import com.adobe.flash.swc.io.SWCReader;
+import com.adobe.flash.swc.io.SWCWriter;
 import com.adobe.flash.swf.Header;
 import com.adobe.flash.swf.SWF;
 import com.adobe.flash.swf.SWFFrame;
@@ -42,8 +45,10 @@ public class SwfToolUI extends JPanel {
     JCheckBox mixvar;
     JCheckBox mixfunc;
     JCheckBox reservedStructure;
+    JCheckBox rubbish;
     JTextField mixcode;
     JTextField nomixpack;
+    JTextField sdk;
     public SwfToolUI(){
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
@@ -62,14 +67,20 @@ public class SwfToolUI extends JPanel {
         add(mixfunc);
         reservedStructure=new JCheckBox("Reserved structure",true);
         add(reservedStructure);
+        rubbish=new JCheckBox("Rubbish",true);
+        add(rubbish);
          mixcode=new JTextField("#");
         add(mixcode);
         nomixpack=new JTextField("morn.core.components");
         add(nomixpack);
 
+        sdk=new JTextField("D:/sdk/AIRSDK_Compiler31");
+        add(sdk);
+        Config.sdk=sdk.getText();
+
         JPanel jPanel=new JPanel();
         add(jPanel);
-        jPanel.setLayout(new GridLayout());
+        jPanel.setLayout(new GridLayout(0,5));
 
         JButton btn1=new JButton("lzma swf");
         btn1.setPreferredSize(new Dimension(100,100));
@@ -91,6 +102,9 @@ public class SwfToolUI extends JPanel {
         JButton btn6=new JButton("at enable");
         btn6.setPreferredSize(new Dimension(100,100));
         jPanel.add(btn6);
+        JButton btn7=new JButton("swf2swc");
+        btn7.setPreferredSize(new Dimension(100,100));
+        jPanel.add(btn7);
 
         new DropTarget(btn1, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
             @Override
@@ -134,6 +148,23 @@ public class SwfToolUI extends JPanel {
                         dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
                         java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
                         linkswf(list);
+                        dtde.dropComplete(true);
+                    }else{
+                        dtde.rejectDrop();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+        });
+        new DropTarget(btn7, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
+            @Override
+            public void drop(DropTargetDropEvent dtde) {
+                try{
+                    if(dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+                        dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
+                        java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
+                        swf2swc(list);
                         dtde.dropComplete(true);
                     }else{
                         dtde.rejectDrop();
@@ -223,7 +254,7 @@ public class SwfToolUI extends JPanel {
                 //e.printStackTrace();
             }
 
-            Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText(),reservedStructure.isSelected(),nomixpack.getText());
+            Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText(),reservedStructure.isSelected(),nomixpack.getText(),rubbish.isSelected());
            long time=System.currentTimeMillis();
             System.out.println("start writeswf"+time);
             SWFWriter writer=new SWFWriter(mixer.outswf,mixer.outswf.getHeader().getCompression());
@@ -275,6 +306,9 @@ public class SwfToolUI extends JPanel {
                 e.printStackTrace();
             }*/
         }
+
+        JOptionPane.showMessageDialog(null, "comp");
+
     }
     private void lzmaswf(java.util.List<File> list){
         for(File file:list){
@@ -297,6 +331,7 @@ public class SwfToolUI extends JPanel {
 
         //showMessageDialog(null,"over");
     }
+
     private void atenableswf(java.util.List<File> list){
         for(File file:list){
             SWFReader reader=new SWFReader();
@@ -426,6 +461,71 @@ public class SwfToolUI extends JPanel {
             new Builder(file);
 
         }
+        //showMessageDialog(null,"over");
+    }
+
+    private void swf2swc(java.util.List<File> list){
+        for(File file:list){
+            SWFReader reader=new SWFReader();
+            SWF swf=null;
+            try {
+                swf = (SWF)reader.readFrom(new FileInputStream(file), file.getPath());
+                File file1=new File(file.getParent()+File.separator+"swc2_"+file.getName()+".swc");
+                SWC swc=new SWC(file1);
+                SWCLibrary swcLibrary=new SWCLibrary("library.swf",swf);
+                swc.addLibrary(swcLibrary);
+                swc.getVersion().setSWCVersion("1.2");
+                swc.getVersion().setCompilerBuild("354208");
+                swc.getVersion().setCompilerVersion("2.0.0");
+                swc.getVersion().setCompilerName("ActionScript Compiler");
+                for(SWFFrame frame: swf.getFrames()){
+                    Iterator<ITag> it=frame.iterator();
+                    int i=0;
+                    while (it.hasNext()){
+                        ITag iTag= it.next();
+                        if(iTag instanceof DoABCTag){
+                            DoABCTag abcTag=(DoABCTag) iTag;
+                            ABCParser abcParser = new ABCParser(abcTag.getABCData());
+                            ABCEmitter abc = new ABCEmitter();
+                            abc.setAllowBadJumps(true);
+                            abcParser.parseABC(abc);
+                            System.out.println(1);
+                            SWCScript script=new SWCScript();
+                            script.setName("T");
+                            script.setLastModified((new Date().getTime()));
+                            script.addDefinition("T");//要想script正常使用，要加入类名，并且swfabc是分离的
+                            script.addDependency("Object", DependencyType.get('i'));
+                            swcLibrary.addScript(script);
+                        }
+                    }
+                }
+
+                SWCWriter swcWriter=new SWCWriter(file1.getPath());
+                swcWriter.write(swc);
+            }catch (Exception err){
+                err.printStackTrace();
+            }
+
+            try {
+                //SWCWriter writer=new SWCWriter(file.getParent()+File.separator+"swc_"+file.getName()+".swc");
+                System.setProperty("file.encoding","gb2312");
+                System.setProperty("flexlib","D:\\sdk\\AIRSDK_Compiler31\\frameworks");
+                //%FLEX%\bin\compc -load-config %FLEX%/frameworks/air-config.xml -sp ../lib3d/src -include-sources ../lib3d/src -external-library-path+=libin -inline -o lib.swc
+                //batstr += "%FLEX%\\bin\\mxmlc -load-config=\"%FLEX%/frameworks/airmobile-config.xml\" -default-size 1440 810 -swf-version=35 -compress=true -omit-trace-statements=false -warnings=false -define=CONFIG::debug,false -define=CONFIG::release,true -define=CONFIG::mobile,true -define=CONFIG::air,true -define=CONFIG::timeStamp,%date:~0,4%-%date:~5,2%-%date:~8,2%/%time:~0,2%/%time:~3,2%/%time:~6,2% -define=CONFIG::browser,false -define=CONFIG::autosize,true -define=CONFIG::anfeng,true ";
+
+                COMPC.staticMainNoExit(new String[]{"-sp", file.getParent(),"-include-sources",file.getParent(),"-define=CONFIG::js_only,false","-define=CONFIG::as_only,true","-o",file.getParent()+File.separator+"swc_"+file.getName()+".swc"});
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            /*SWFWriter writer=new SWFWriter(swf,swf.getHeader().getCompression());
+            try {
+                writer.writeTo(new File(file.getParent()+File.separator+"lzma_"+file.getName()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+        }
+
         //showMessageDialog(null,"over");
     }
 }

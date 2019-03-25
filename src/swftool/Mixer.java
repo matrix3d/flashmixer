@@ -1,9 +1,16 @@
 package swftool;
 
 import com.adobe.flash.abc.ABCConstants;
+import com.adobe.flash.abc.ABCLinker;
 import com.adobe.flash.abc.ABCParser;
 import com.adobe.flash.abc.semantics.*;
 import com.adobe.flash.abc.visitors.IABCVisitor;
+import com.adobe.flash.compiler.clients.COMPC;
+import com.adobe.flash.swc.ISWCLibrary;
+import com.adobe.flash.swc.ISWCScript;
+import com.adobe.flash.swc.SWC;
+import com.adobe.flash.swc.SWCScript;
+import com.adobe.flash.swc.io.SWCReader;
 import com.adobe.flash.swf.Header;
 import com.adobe.flash.swf.SWF;
 import com.adobe.flash.swf.SWFFrame;
@@ -16,8 +23,11 @@ import com.adobe.flash.swf.tags.SymbolClassTag;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.org.apache.xerces.internal.xs.StringList;
+import org.apache.commons.io.FileUtils;
+import swftool.gencode.CodeGen;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
@@ -57,10 +67,13 @@ public class Mixer
     private boolean atenable;
     private boolean hasAt;
     private boolean reservedStructure;
+    private boolean isRubbish;
     private String mixcode;
     private String[] nomixpack;
-    public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode,boolean reservedStructure,String noMixPackStr)
+    private File file;
+    public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode,boolean reservedStructure,String noMixPackStr,boolean isRubbish)
     {
+        this.file=file;
         this.mixMap = mixMap;
         this.isMixPackage = isMixPackage;
         this.isMixClass = isMixClass;
@@ -68,6 +81,7 @@ public class Mixer
         this.isMixFunc=isMixFunc;
         this.mixcode=mixcode;
         this.reservedStructure=reservedStructure;
+        this.isRubbish=isRubbish;
 
         long time=System.currentTimeMillis();
         System.out.println("start gson"+time);
@@ -92,7 +106,8 @@ public class Mixer
                 if(line==null){
                     break;
                 }
-                if(line.matches("[A-Za-z]+")&&!wordsset.contains(line)){
+                line=line.toLowerCase();
+                if(line.matches("[A-Za-z]+")&&!wordsset.contains(line)&&line.length()>2){
                     words.add(line);
                     wordsset.add(line);
                 }
@@ -101,7 +116,6 @@ public class Mixer
             ois.close();
         }catch (Exception e){
             e.printStackTrace();
-            nomixMap=new HashSet<>();
         }
 
         if(noMixPackStr.length()>0){
@@ -381,8 +395,9 @@ public class Mixer
 
         }
         String sname=swf.getTopLevelClass();
-        swf.setTopLevelClass(getSymbolName(sname));
-
+       if(sname!=null) {
+           swf.setTopLevelClass(getSymbolName(sname));
+       }
         for(SWFFrame frame: swf.getFrames()){
             Iterator<ITag> it=frame.iterator();
             while (it.hasNext()){
@@ -400,6 +415,72 @@ public class Mixer
                 }
             }
             //frame.sy
+        }
+
+        //gen rubbish code
+        //FileSystemView fsv = FileSystemView.getFileSystemView();
+        //File com=fsv.getHomeDirectory();
+        if(isRubbish) {
+            int i=0;
+            File rbfile;
+            while (true) {
+                rbfile = new File(file.getParent() + File.separator + "__rubbish" + i);
+                i++;
+                if (!rbfile.exists()) {
+                    break;
+                }
+            }
+            new CodeGen(rbfile.getPath(), words, stringMap, 1000);
+            String swcfile=file.getParent()+File.separator+rbfile.getName()+".swc";
+            try {
+                //SWCWriter writer=new SWCWriter(file.getParent()+File.separator+"swc_"+file.getName()+".swc");
+                System.setProperty("file.encoding","gb2312");
+                System.setProperty("flexlib",Config.sdk+"/frameworks");
+                //%FLEX%\bin\compc -load-config %FLEX%/frameworks/air-config.xml -sp ../lib3d/src -include-sources ../lib3d/src -external-library-path+=libin -inline -o lib.swc
+                //batstr += "%FLEX%\\bin\\mxmlc -load-config=\"%FLEX%/frameworks/airmobile-config.xml\" -default-size 1440 810 -swf-version=35 -compress=true -omit-trace-statements=false -warnings=false -define=CONFIG::debug,false -define=CONFIG::release,true -define=CONFIG::mobile,true -define=CONFIG::air,true -define=CONFIG::timeStamp,%date:~0,4%-%date:~5,2%-%date:~8,2%/%time:~0,2%/%time:~3,2%/%time:~6,2% -define=CONFIG::browser,false -define=CONFIG::autosize,true -define=CONFIG::anfeng,true ";
+                COMPC.staticMainNoExit(new String[]{"-sp", rbfile.getPath(),"-include-sources",rbfile.getPath(),"-define=CONFIG::js_only,false","-define=CONFIG::as_only,true","-o",swcfile});
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            SWCReader reader=new SWCReader(swcfile);
+            SWC swc= (SWC) reader.getSWC();
+            Collection<ISWCLibrary> iswcLibraries= swc.getLibraries();
+            ArrayList<byte[]> rbabcs=new ArrayList<>();
+            for(ISWCLibrary swcLibrary: iswcLibraries){
+                SWFReader swfReader=new SWFReader();
+                swcLibrary.readSWFInputStream(swfReader,swc);
+
+                SWF swf=(SWF)swfReader.getSWF();
+                for(SWFFrame frame: swf.getFrames()){
+                    Iterator<ITag> it=frame.iterator();
+                    while (it.hasNext()){
+                        ITag iTag= it.next();
+                        if(iTag instanceof DoABCTag){
+                            DoABCTag abcTag=(DoABCTag) iTag;
+                            byte[] abcdata= abcTag.getABCData();
+                            rbabcs.add(abcdata);
+                        }
+                    }
+                }
+            }
+
+            for (DoABCTag doABCTag : abcs){
+                ABCEmitter abc=(ABCEmitter) tag2abc.get(doABCTag);
+                ArrayList<byte[]> abcbs=new ArrayList<>();
+                abcbs.add(doABCTag.getABCData());
+                for(byte[] rbabc:rbabcs){
+                    abcbs.add(rbabc);
+                }
+                try{
+                    doABCTag.setABCData(ABCLinker.linkABC(abcbs,abc.versionABCMajor,abc.versionABCMinor,new ABCLinker.ABCLinkerSettings()));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+
         }
     }
 
@@ -479,24 +560,23 @@ public class Mixer
     }
 
     private String getRandomWord(){
-        String s1=getRandomWord1();
-        int l=(int)(Math.random()*2)+1;
-        for(int i=0;i<l;i++){
-            String s=getRandomWord1();
-            s1+=s.substring(0,1).toUpperCase();
-            s1+=s.substring(1);
+        while (true){
+            String s1=getRandomWord1();
+            int l=(int)(Math.random()*2)+1;
+            for(int i=0;i<l;i++){
+                String s=getRandomWord1();
+                s1+=s.substring(0,1).toUpperCase();
+                s1+=s.substring(1);
+            }
+            if(!stringMap.contains(s1)){
+                return s1;
+            }
         }
-        return  s1;
     }
 
     private String getRandomWord1(){
         //不能包含在现有的strings中 不能包含已经随机到的word中，只包含英文
-        while (true){
-            String s= words.remove((int)(Math.random()*words.size()));
-            if(!stringMap.contains(s)&&s.length()>2){
-                return s;
-            }
-        }
+        return words.remove((int)(Math.random()*words.size()));
     }
 }
 

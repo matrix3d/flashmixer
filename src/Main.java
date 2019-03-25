@@ -8,6 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -30,6 +36,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.javadocking.DockingManager;
@@ -73,6 +80,7 @@ import com.javadocking.util.ToolBarButton;
 import com.javadocking.visualizer.DockingMinimizer;
 import com.javadocking.visualizer.FloatExternalizer;
 import com.javadocking.visualizer.SingleMaximizer;
+import swftool.gencode.CodeGen;
 import swftool.swftree.CodeInfo;
 import swftool.swftree.CodeView;
 import swftool.swftree.SwfTree;
@@ -786,7 +794,32 @@ public class Main extends JPanel
 		// Set the frame properties and show it.
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
+
+        ArrayList<String> words= new ArrayList();
+        try{
+            InputStreamReader ois=new InputStreamReader(Main.class.getClass().getResourceAsStream("/res/words.txt"));
+            BufferedReader inputStream=new BufferedReader(ois);
+            String line=null;
+            HashSet<String> wordsset=new HashSet<>();
+            while (true){
+                line=inputStream.readLine();
+                if(line==null){
+                    break;
+                }
+                line=line.toLowerCase();
+                if(line.matches("[A-Za-z]+")&&!wordsset.contains(line)&&line.length()>2){
+                    words.add(line);
+                    wordsset.add(line);
+                }
+            }
+            inputStream.close();
+            ois.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        File com=fsv.getHomeDirectory();
+        //new CodeGen(com.getPath()+File.separator+"1",words,null,100);
 	}
 
 	public static void main(String args[]) 
