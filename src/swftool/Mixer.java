@@ -67,11 +67,11 @@ public class Mixer
     private boolean atenable;
     private boolean hasAt;
     private boolean reservedStructure;
-    private boolean isRubbish;
+    private int rubbish;
     private String mixcode;
     private String[] nomixpack;
     private File file;
-    public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode,boolean reservedStructure,String noMixPackStr,boolean isRubbish)
+    public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode,boolean reservedStructure,String noMixPackStr,int rubbish)
     {
         this.file=file;
         this.mixMap = mixMap;
@@ -81,7 +81,7 @@ public class Mixer
         this.isMixFunc=isMixFunc;
         this.mixcode=mixcode;
         this.reservedStructure=reservedStructure;
-        this.isRubbish=isRubbish;
+        this.rubbish=rubbish;
 
         long time=System.currentTimeMillis();
         System.out.println("start gson"+time);
@@ -420,7 +420,7 @@ public class Mixer
         //gen rubbish code
         //FileSystemView fsv = FileSystemView.getFileSystemView();
         //File com=fsv.getHomeDirectory();
-        if(isRubbish) {
+        if(rubbish>0) {
             int i=0;
             File rbfile;
             while (true) {
@@ -430,7 +430,7 @@ public class Mixer
                     break;
                 }
             }
-            new CodeGen(rbfile.getPath(), words, stringMap, 1000);
+            new CodeGen(rbfile.getPath(), words, stringMap, rubbish);
             String swcfile=file.getParent()+File.separator+rbfile.getName()+".swc";
             try {
                 //SWCWriter writer=new SWCWriter(file.getParent()+File.separator+"swc_"+file.getName()+".swc");
@@ -440,47 +440,48 @@ public class Mixer
                 //batstr += "%FLEX%\\bin\\mxmlc -load-config=\"%FLEX%/frameworks/airmobile-config.xml\" -default-size 1440 810 -swf-version=35 -compress=true -omit-trace-statements=false -warnings=false -define=CONFIG::debug,false -define=CONFIG::release,true -define=CONFIG::mobile,true -define=CONFIG::air,true -define=CONFIG::timeStamp,%date:~0,4%-%date:~5,2%-%date:~8,2%/%time:~0,2%/%time:~3,2%/%time:~6,2% -define=CONFIG::browser,false -define=CONFIG::autosize,true -define=CONFIG::anfeng,true ";
                 COMPC.staticMainNoExit(new String[]{"-sp", rbfile.getPath(),"-include-sources",rbfile.getPath(),"-define=CONFIG::js_only,false","-define=CONFIG::as_only,true","-o",swcfile});
 
+                SWCReader reader=new SWCReader(swcfile);
+                SWC swc= (SWC) reader.getSWC();
+                Collection<ISWCLibrary> iswcLibraries= swc.getLibraries();
+                ArrayList<byte[]> rbabcs=new ArrayList<>();
+                for(ISWCLibrary swcLibrary: iswcLibraries){
+                    SWFReader swfReader=new SWFReader();
+                    swcLibrary.readSWFInputStream(swfReader,swc);
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            SWCReader reader=new SWCReader(swcfile);
-            SWC swc= (SWC) reader.getSWC();
-            Collection<ISWCLibrary> iswcLibraries= swc.getLibraries();
-            ArrayList<byte[]> rbabcs=new ArrayList<>();
-            for(ISWCLibrary swcLibrary: iswcLibraries){
-                SWFReader swfReader=new SWFReader();
-                swcLibrary.readSWFInputStream(swfReader,swc);
-
-                SWF swf=(SWF)swfReader.getSWF();
-                for(SWFFrame frame: swf.getFrames()){
-                    Iterator<ITag> it=frame.iterator();
-                    while (it.hasNext()){
-                        ITag iTag= it.next();
-                        if(iTag instanceof DoABCTag){
-                            DoABCTag abcTag=(DoABCTag) iTag;
-                            byte[] abcdata= abcTag.getABCData();
-                            rbabcs.add(abcdata);
+                    SWF swf=(SWF)swfReader.getSWF();
+                    for(SWFFrame frame: swf.getFrames()){
+                        Iterator<ITag> it=frame.iterator();
+                        while (it.hasNext()){
+                            ITag iTag= it.next();
+                            if(iTag instanceof DoABCTag){
+                                DoABCTag abcTag=(DoABCTag) iTag;
+                                byte[] abcdata= abcTag.getABCData();
+                                rbabcs.add(abcdata);
+                            }
                         }
                     }
                 }
-            }
 
-            for (DoABCTag doABCTag : abcs){
-                ABCEmitter abc=(ABCEmitter) tag2abc.get(doABCTag);
-                ArrayList<byte[]> abcbs=new ArrayList<>();
-                abcbs.add(doABCTag.getABCData());
-                for(byte[] rbabc:rbabcs){
-                    abcbs.add(rbabc);
+                for (DoABCTag doABCTag : abcs){
+                    ABCEmitter abc=(ABCEmitter) tag2abc.get(doABCTag);
+                    ArrayList<byte[]> abcbs=new ArrayList<>();
+                    abcbs.add(doABCTag.getABCData());
+                    for(byte[] rbabc:rbabcs){
+                        abcbs.add(rbabc);
+                    }
+                    try{
+                        doABCTag.setABCData(ABCLinker.linkABC(abcbs,abc.versionABCMajor,abc.versionABCMinor,new ABCLinker.ABCLinkerSettings()));
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null,e.getMessage());
+                        swf=null;
+                    }
                 }
-                try{
-                    doABCTag.setABCData(ABCLinker.linkABC(abcbs,abc.versionABCMajor,abc.versionABCMinor,new ABCLinker.ABCLinkerSettings()));
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null,e.getMessage());
+                swf=null;
             }
-
-
         }
     }
 

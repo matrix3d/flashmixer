@@ -45,7 +45,7 @@ public class SwfToolUI extends JPanel {
     JCheckBox mixvar;
     JCheckBox mixfunc;
     JCheckBox reservedStructure;
-    JCheckBox rubbish;
+    JTextField rubbish;
     JTextField mixcode;
     JTextField nomixpack;
     JTextField sdk;
@@ -67,7 +67,7 @@ public class SwfToolUI extends JPanel {
         add(mixfunc);
         reservedStructure=new JCheckBox("Reserved structure",true);
         add(reservedStructure);
-        rubbish=new JCheckBox("Rubbish",true);
+        rubbish=new JTextField("2000");
         add(rubbish);
          mixcode=new JTextField("#");
         add(mixcode);
@@ -254,7 +254,7 @@ public class SwfToolUI extends JPanel {
                 //e.printStackTrace();
             }
 
-            Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText(),reservedStructure.isSelected(),nomixpack.getText(),rubbish.isSelected());
+            Mixer mixer= new Mixer(file,mixclass.isSelected(),mixpackage.isSelected(),mixvar.isSelected(),mixfunc.isSelected(),mixMap,mixcode.getText(),reservedStructure.isSelected(),nomixpack.getText(),Integer.parseInt(rubbish.getText()));
            long time=System.currentTimeMillis();
             System.out.println("start writeswf"+time);
             SWFWriter writer=new SWFWriter(mixer.outswf,mixer.outswf.getHeader().getCompression());
