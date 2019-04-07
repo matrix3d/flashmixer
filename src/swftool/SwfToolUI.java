@@ -471,7 +471,7 @@ public class SwfToolUI extends JPanel {
             SWF swf=null;
             try {
                 swf = (SWF)reader.readFrom(new FileInputStream(file), file.getPath());
-                File file1=new File(file.getParent()+File.separator+"swc2_"+file.getName()+".swc");
+                File file1=new File(file.getParent()+File.separator+file.getName()+".swc");
                 SWC swc=new SWC(file1);
                 SWCLibrary swcLibrary=new SWCLibrary("library.swf",swf);
                 swc.addLibrary(swcLibrary);
@@ -493,15 +493,15 @@ public class SwfToolUI extends JPanel {
                             ABCEmitter abc = new ABCEmitter();
                             abc.setAllowBadJumps(true);
                             abcParser.parseABC(abc);
+                            SWCScript script=new SWCScript();
+                            script.setName(abcTag.getName());
                             for(ABCEmitter.EmitterClassVisitor ci : abc.definedClasses){
                                 String nsname=ci.instanceInfo.name.getSingleQualifier().getName();
                                 String cname=ci.instanceInfo.name.getBaseName();
-                                SWCScript script=new SWCScript();
-                                script.setName(abcTag.getName());
                                 script.addDefinition(nsname+"."+cname);
-                                script.addDependency("Object", DependencyType.get('i'));
-                                swcLibrary.addScript(script);
                             }
+                            script.addDependency("Object", DependencyType.get('i'));
+                            swcLibrary.addScript(script);
 
 
                         }
@@ -516,12 +516,12 @@ public class SwfToolUI extends JPanel {
 
             try {
                 //SWCWriter writer=new SWCWriter(file.getParent()+File.separator+"swc_"+file.getName()+".swc");
-                System.setProperty("file.encoding","gb2312");
-                System.setProperty("flexlib","D:\\sdk\\AIRSDK_Compiler31\\frameworks");
+                //System.setProperty("file.encoding","gb2312");
+                //System.setProperty("flexlib","D:\\sdk\\AIRSDK_Compiler31\\frameworks");
                 //%FLEX%\bin\compc -load-config %FLEX%/frameworks/air-config.xml -sp ../lib3d/src -include-sources ../lib3d/src -external-library-path+=libin -inline -o lib.swc
                 //batstr += "%FLEX%\\bin\\mxmlc -load-config=\"%FLEX%/frameworks/airmobile-config.xml\" -default-size 1440 810 -swf-version=35 -compress=true -omit-trace-statements=false -warnings=false -define=CONFIG::debug,false -define=CONFIG::release,true -define=CONFIG::mobile,true -define=CONFIG::air,true -define=CONFIG::timeStamp,%date:~0,4%-%date:~5,2%-%date:~8,2%/%time:~0,2%/%time:~3,2%/%time:~6,2% -define=CONFIG::browser,false -define=CONFIG::autosize,true -define=CONFIG::anfeng,true ";
 
-                COMPC.staticMainNoExit(new String[]{"-sp", file.getParent(),"-include-sources",file.getParent(),"-define=CONFIG::js_only,false","-define=CONFIG::as_only,true","-o",file.getParent()+File.separator+"swc_"+file.getName()+".swc"});
+                //COMPC.staticMainNoExit(new String[]{"-sp", file.getParent(),"-include-sources",file.getParent(),"-define=CONFIG::js_only,false","-define=CONFIG::as_only,true","-o",file.getParent()+File.separator+"swc_"+file.getName()+".swc"});
             } catch (Exception e) {
                 e.printStackTrace();
             }
