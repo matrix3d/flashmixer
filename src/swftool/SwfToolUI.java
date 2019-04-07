@@ -3,6 +3,7 @@ package swftool;
 import antlr.TokenBuffer;
 import com.adobe.flash.abc.ABCLinker;
 import com.adobe.flash.abc.ABCParser;
+import com.adobe.flash.abc.semantics.Trait;
 import com.adobe.flash.compiler.clients.COMPC;
 import com.adobe.flash.compiler.clients.MXMLC;
 import com.adobe.flash.compiler.common.DependencyType;
@@ -71,7 +72,7 @@ public class SwfToolUI extends JPanel {
         add(rubbish);
          mixcode=new JTextField("#");
         add(mixcode);
-        nomixpack=new JTextField("morn.core.components");
+        nomixpack=new JTextField("morn.core.components,playerio,hx.script,lib3d.air");
         add(nomixpack);
 
         sdk=new JTextField("D:/sdk/AIRSDK_Compiler31");
@@ -478,6 +479,8 @@ public class SwfToolUI extends JPanel {
                 swc.getVersion().setCompilerBuild("354208");
                 swc.getVersion().setCompilerVersion("2.0.0");
                 swc.getVersion().setCompilerName("ActionScript Compiler");
+
+                List<byte[]> abcs=new ArrayList();
                 for(SWFFrame frame: swf.getFrames()){
                     Iterator<ITag> it=frame.iterator();
                     int i=0;
@@ -485,17 +488,22 @@ public class SwfToolUI extends JPanel {
                         ITag iTag= it.next();
                         if(iTag instanceof DoABCTag){
                             DoABCTag abcTag=(DoABCTag) iTag;
+                            abcs.add(abcTag.getABCData());
                             ABCParser abcParser = new ABCParser(abcTag.getABCData());
                             ABCEmitter abc = new ABCEmitter();
                             abc.setAllowBadJumps(true);
                             abcParser.parseABC(abc);
-                            System.out.println(1);
-                            SWCScript script=new SWCScript();
-                            script.setName("T");
-                            script.setLastModified((new Date().getTime()));
-                            script.addDefinition("T");//要想script正常使用，要加入类名，并且swfabc是分离的
-                            script.addDependency("Object", DependencyType.get('i'));
-                            swcLibrary.addScript(script);
+                            for(ABCEmitter.EmitterClassVisitor ci : abc.definedClasses){
+                                String nsname=ci.instanceInfo.name.getSingleQualifier().getName();
+                                String cname=ci.instanceInfo.name.getBaseName();
+                                SWCScript script=new SWCScript();
+                                script.setName(abcTag.getName());
+                                script.addDefinition(nsname+"."+cname);
+                                script.addDependency("Object", DependencyType.get('i'));
+                                swcLibrary.addScript(script);
+                            }
+
+
                         }
                     }
                 }

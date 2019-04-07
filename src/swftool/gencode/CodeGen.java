@@ -155,7 +155,7 @@ public class CodeGen {
     private String getRandomWord(){
         while (true){
             String s1="";//getRandomWord1();
-            int l=(int)(Math.random()*2)+1;
+            int l=1;//(int)(Math.random()*2)+1;
             for(int i=0;i<l;i++){
                 String s=getRandomWord1();
                 s1+=s.substring(0,1).toUpperCase();
