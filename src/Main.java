@@ -12,10 +12,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -39,6 +36,9 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.LinkedTreeMap;
 import com.javadocking.DockingManager;
 import com.javadocking.dock.BorderDock;
 import com.javadocking.dock.CompositeLineDock;
@@ -834,6 +834,24 @@ public class Main extends JPanel
             }
         };
         SwingUtilities.invokeLater(doCreateAndShowGUI);
+
+       /* Gson gson=new GsonBuilder().disableHtmlEscaping().create();
+        HashMap a=gson.fromJson("{'a':2,'b':{'c':{'d':3}}}", HashMap.class);
+        LinkedTreeMap b=(LinkedTreeMap) a.get("b");
+        LinkedTreeMap c=(LinkedTreeMap) b.get("c");
+        System.out.println(c.get("d"));*/
+
+
+        JSONNode node=new JSONNode("{'a':2,'b':{'c':{'d':3},'f':'55555'}}");
+        //JSONNode node=new JSONNode("{'a':[1,'2']}");
+
+        Object d=0;
+        try{
+            d=node.get("b").get("f").value;
+        }catch (Exception e){
+
+        }
+        System.out.println(d);
     }
 	
 }

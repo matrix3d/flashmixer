@@ -32,6 +32,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
+import static java.lang.Integer.numberOfTrailingZeros;
 import static java.lang.Integer.parseInt;
 
 /**
@@ -190,6 +191,13 @@ public class Mixer
         this.charSetLength = CHAR_SET.length();
     }
 
+    private void addNoMix(String string){
+        if("GameLoader".equals(string)){
+            System.out.println(1);
+        }
+        nomixMap2.add(string);
+    }
+
     private void findABCMethodBodies(DoABCTag doABCTag) {
         ABCParser abcParser=new ABCParser(doABCTag.getABCData());
         long time=System.currentTimeMillis();
@@ -226,7 +234,7 @@ public class Mixer
 
             for(PooledValue pooledValue : defaultValues){
                 if (pooledValue.getKind()==1) {
-                    nomixMap2.add(pooledValue.getStringValue());
+                    addNoMix(pooledValue.getStringValue());
                     //System.out.println(pooledValue.getStringValue());
                 }
             }
@@ -240,7 +248,7 @@ public class Mixer
 
                     if (instruction.getOpcode() == ABCConstants.OP_pushstring) {
                         String pstr = (String) instruction.getOperand(0);
-                        nomixMap2.add(pstr);
+                        addNoMix(pstr);
 
                         if (isGetDefing) {
                             int index = pstr.lastIndexOf("::");
@@ -255,7 +263,7 @@ public class Mixer
                                 String nomixPackname = pstr.substring(0, index);
                                 if (nomixPackname.length() > 0) {
                                     nomixPackMap.add(nomixPackname);
-                                    nomixMap2.add(nomixPackname);
+                                    addNoMix(nomixPackname);
                                 }
                                 String nomixClsName = pstr.substring(index2);
                                 if (nomixClsName.length() > 0) {
@@ -272,12 +280,12 @@ public class Mixer
                             if(name.getQualifiers()!=null) {
                                 for (Namespace ns : name.getQualifiers()) {
                                     if ("Object".equals(ns.getName())) {
-                                        nomixMap2.add(name.getBaseName());
+                                        addNoMix(name.getBaseName());
                                         break;
                                     }
                                 }
                             }else {
-                                nomixMap2.add(name.getBaseName());
+                                addNoMix(name.getBaseName());
                             }
                         }
                     }
@@ -314,8 +322,8 @@ public class Mixer
             if(nomixpack.length>0&&nsname!=null){
                 for(String s : nomixpack){
                     if(nsname.indexOf(s)==0){
-                        nomixMap2.add(cname);
-                        nomixMap2.add(nsname);
+                       addNoMix(cname);
+                        addNoMix(nsname);
                         break;
                     }
                 }
@@ -323,8 +331,8 @@ public class Mixer
 
 
             if (nomixPackMap.contains(nsname)){
-                nomixMap2.add(cname);
-                nomixMap2.add(nsname);
+                addNoMix(cname);
+                addNoMix(nsname);
             }
             if(isMixClass){
                 waitMixs.add(cname);
@@ -342,15 +350,15 @@ public class Mixer
                         waitMixs.add(trait.getName().getBaseName());
                     }
                 }else {
-                    nomixMap2.add(trait.getName().getBaseName());
+                    addNoMix(trait.getName().getBaseName());
                 }
             }
         }
         for (String s : abc.stringPool.getValues()){
             stringMap.add(s);
         }for(Namespace ln : abc.nsPool.getValues()){
-            if (ln.getKind()==5){//私有，不能混淆？
-                nomixMap2.add(ln.getName());
+            if (ln.getKind()==5&&ln.getName().indexOf(".")>=0){//私有，不能混淆？
+                addNoMix(ln.getName());
             }
         }
     }

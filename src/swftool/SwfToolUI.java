@@ -498,9 +498,18 @@ public class SwfToolUI extends JPanel {
                             for(ABCEmitter.EmitterClassVisitor ci : abc.definedClasses){
                                 String nsname=ci.instanceInfo.name.getSingleQualifier().getName();
                                 String cname=ci.instanceInfo.name.getBaseName();
-                                script.addDefinition(nsname+"."+cname);
+                                String id=cname;
+                                if("".equals(nsname)){
+                                    //script.addDefinition(cname);
+                                }else {
+                                    id=nsname + "." + cname;
+                                    //script.addDefinition();
+                                }
+                                script.addDefinition(id);
+                                //script.addDependency(id,DependencyType.SIGNATURE);
                             }
-                            script.addDependency("Object", DependencyType.get('i'));
+
+                            script.addDependency("Object", DependencyType.INHERITANCE);
                             swcLibrary.addScript(script);
 
 
