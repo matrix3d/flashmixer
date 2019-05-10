@@ -18,8 +18,7 @@ import com.adobe.flash.swf.SWFFrame;
 import com.adobe.flash.swf.io.SWFDump;
 import com.adobe.flash.swf.io.SWFReader;
 import com.adobe.flash.swf.io.SWFWriter;
-import com.adobe.flash.swf.tags.DoABCTag;
-import com.adobe.flash.swf.tags.ITag;
+import com.adobe.flash.swf.tags.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.layout.VBox;
@@ -481,9 +480,13 @@ public class SwfToolUI extends JPanel {
                 swc.getVersion().setCompilerName("ActionScript Compiler");
 
                 List<byte[]> abcs=new ArrayList();
-                for(SWFFrame frame: swf.getFrames()){
+                List<SWFFrame> frames=swf.getFrames();
+                SWFFrame frame =frames.get(0);
+                SymbolClassTag symbolClassTag=null;
+                //for(SWFFrame frame: swf.getFrames()){
+
                     Iterator<ITag> it=frame.iterator();
-                    int i=0;
+                    //int i=0;
                     while (it.hasNext()){
                         ITag iTag= it.next();
                         if(iTag instanceof DoABCTag){
@@ -511,11 +514,29 @@ public class SwfToolUI extends JPanel {
 
                             script.addDependency("Object", DependencyType.INHERITANCE);
                             swcLibrary.addScript(script);
+                        }else if(iTag instanceof SymbolClassTag){
+                            symbolClassTag=(SymbolClassTag) iTag;
+                        }
+                    }
+                    for(int i=1;i<frames.size();i++){//如果有多个帧，将其它帧的数据添加到第一帧。
+                        SWFFrame frame1=frames.get(i);
+                        SymbolClassTag symbolClassTag1=null;
+                        for(ITag iTag:frame1){
+                            if(iTag instanceof SymbolClassTag){
+                                symbolClassTag1=(SymbolClassTag)iTag;
+                                for(String sname:symbolClassTag1.getSymbolNames()){
+                                    symbolClassTag.addSymbol(symbolClassTag1.getSymbol(sname),sname);
+                                }
+                            }
+                            else if(iTag instanceof IManagedTag){
 
+                            }else{
+                                frame.addTag(iTag);
+                            }
 
                         }
                     }
-                }
+                //}
 
                 SWCWriter swcWriter=new SWCWriter(file1.getPath());
                 swcWriter.write(swc);

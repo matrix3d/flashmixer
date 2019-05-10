@@ -1,0 +1,3 @@
+[
+    ["mochi.as3","MochiServices","mochi.as32","MochiServices"]
+]

@@ -72,6 +72,7 @@ public class Mixer
     private String mixcode;
     private String[] nomixpack;
     private File file;
+    private List<List<String>> getlexs;
     public Mixer(File file, boolean isMixClass, boolean isMixPackage,boolean isMixVar,boolean isMixFunc,Map<String,String> mixMap, String mixcode,boolean reservedStructure,String noMixPackStr,int rubbish)
     {
         this.file=file;
@@ -88,6 +89,13 @@ public class Mixer
         System.out.println("start gson"+time);
         Gson gson=new GsonBuilder().disableHtmlEscaping().create();
         InputStreamReader ois=null;
+        try{
+            ois=new InputStreamReader(this.getClass().getResourceAsStream("/res/GetLex.txt"));
+            getlexs=gson.fromJson(ois,ArrayList.class);//(HashSet<String>)ois.readObject();
+            ois.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         try{
             ois=new InputStreamReader(this.getClass().getResourceAsStream("/res/airglobal_strs"));
             nomixMap=gson.fromJson(ois,HashSet.class);//(HashSet<String>)ois.readObject();
@@ -297,6 +305,22 @@ public class Mixer
                             isGetDefing = true;
                         }
                     }
+
+                    if(getlexs!=null){
+                        if(instruction.getOpcode()==ABCConstants.OP_getlex){
+                            if (instruction.getOperandCount() > 0 && instruction.getOperand(0) instanceof Name) {
+                                Name name = (Name) instruction.getOperand(0);
+                                if(name.getBaseName().equals("MochiServices")){
+                                    Name name2=new Name(new Namespace(name.getSingleQualifier().getKind(),"m2"),name.getBaseName());
+                                   // instruction.setOperands();
+                                    System.out.println(name2);
+                                    OneOperandInstruction instruction1=(OneOperandInstruction)instruction;
+                                    instruction1.operand=name2;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -357,7 +381,7 @@ public class Mixer
         for (String s : abc.stringPool.getValues()){
             stringMap.add(s);
         }for(Namespace ln : abc.nsPool.getValues()){
-            if (ln.getKind()==5&&ln.getName().indexOf(".")>=0){//私有，不能混淆？
+            if (ln!=null&&ln.getName()!=null&&ln.getKind()==5&&ln.getName().indexOf(".")>=0){//私有，不能混淆？
                 addNoMix(ln.getName());
             }
         }
