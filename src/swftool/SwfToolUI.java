@@ -84,24 +84,24 @@ public class SwfToolUI extends JPanel {
 
         JButton btn1=new JButton("lzma swf");
         btn1.setPreferredSize(new Dimension(100,100));
-        jPanel.add(btn1);
+        //jPanel.add(btn1);
 
         JButton btn2=new JButton("mix swf");
         btn2.setPreferredSize(new Dimension(100,100));
         jPanel.add(btn2);
         JButton btn3=new JButton("dump swf");
         btn3.setPreferredSize(new Dimension(100,100));
-        jPanel.add(btn3);
+        //jPanel.add(btn3);
         JButton btn4=new JButton("build swf");
         btn4.setPreferredSize(new Dimension(100,100));
-        jPanel.add(btn4);
+       // jPanel.add(btn4);
         JButton btn5=new JButton("link swf");
         btn5.setPreferredSize(new Dimension(100,100));
         jPanel.add(btn5);
 
         JButton btn6=new JButton("at enable");
         btn6.setPreferredSize(new Dimension(100,100));
-        jPanel.add(btn6);
+        //jPanel.add(btn6);
         JButton btn7=new JButton("swf2swc");
         btn7.setPreferredSize(new Dimension(100,100));
         jPanel.add(btn7);
@@ -481,10 +481,9 @@ public class SwfToolUI extends JPanel {
 
                 List<byte[]> abcs=new ArrayList();
                 List<SWFFrame> frames=swf.getFrames();
-                SWFFrame frame =frames.get(0);
+                //SWFFrame frame =frames.get(0);
                 SymbolClassTag symbolClassTag=null;
-                //for(SWFFrame frame: swf.getFrames()){
-
+                for(SWFFrame frame: swf.getFrames()){
                     Iterator<ITag> it=frame.iterator();
                     //int i=0;
                     while (it.hasNext()){
@@ -515,28 +514,35 @@ public class SwfToolUI extends JPanel {
                             script.addDependency("Object", DependencyType.INHERITANCE);
                             swcLibrary.addScript(script);
                         }else if(iTag instanceof SymbolClassTag){
-                            symbolClassTag=(SymbolClassTag) iTag;
+                            if(symbolClassTag==null) {
+                                symbolClassTag = (SymbolClassTag) iTag;
+                            }
                         }
                     }
-                    for(int i=1;i<frames.size();i++){//如果有多个帧，将其它帧的数据添加到第一帧。
-                        SWFFrame frame1=frames.get(i);
-                        SymbolClassTag symbolClassTag1=null;
-                        for(ITag iTag:frame1){
-                            if(iTag instanceof SymbolClassTag){
-                                symbolClassTag1=(SymbolClassTag)iTag;
-                                for(String sname:symbolClassTag1.getSymbolNames()){
-                                    symbolClassTag.addSymbol(symbolClassTag1.getSymbol(sname),sname);
-                                }
-                            }
-                            else if(iTag instanceof IManagedTag){
+                }
 
-                            }else{
-                                frame.addTag(iTag);
-                            }
+                //linkabc
 
+
+                for(int i=1;i<frames.size();i++){//如果有多个帧，将其它帧的数据添加到第一帧。
+                    SWFFrame frame1=frames.get(i);
+                    SymbolClassTag symbolClassTag1=null;
+                    for(ITag iTag:frame1){
+                        if(iTag instanceof SymbolClassTag){
+                            symbolClassTag1=(SymbolClassTag)iTag;
+                            for(String sname:symbolClassTag1.getSymbolNames()){
+                                symbolClassTag.addSymbol(symbolClassTag1.getSymbol(sname),sname);
+                            }
                         }
+                        else if(iTag instanceof IManagedTag){
+
+                        }else{
+                            frames.get(0).addTag(iTag);
+                        }
+
                     }
-                //}
+                }
+
 
                 SWCWriter swcWriter=new SWCWriter(file1.getPath());
                 swcWriter.write(swc);

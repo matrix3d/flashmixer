@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07a837b1-26ce-4ac0-a247-22fd5a508517" name="Default Changelist" comment="dddd">
-      <change afterPath="$PROJECT_DIR$/assets/res/GetLex.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/asc2_jar/asc2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/asc2_jar/asc2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swftool/Mixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swftool/Mixer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swftool/SwfToolUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swftool/SwfToolUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,7 +22,7 @@
     <session id="772004992">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
@@ -39,13 +37,13 @@
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.34" value="3" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.36" value="2" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -56,7 +54,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="12" />
-          <entry key="JAVA" value="26181" />
+          <entry key="JAVA" value="26323" />
           <entry key="PLAIN_TEXT" value="83" />
         </counts>
       </usages-collector>
@@ -69,8 +67,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="457" />
-          <entry key="JAVA" value="250" />
+          <entry key="CLASS" value="458" />
+          <entry key="JAVA" value="251" />
           <entry key="Manifest" value="2" />
           <entry key="PLAIN_TEXT" value="6" />
         </counts>
@@ -78,102 +76,19 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55340374">
+    <splitter split-orientation="horizontal" split-proportion="0.77435267">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/swftool/SwfToolUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="159">
-                  <caret line="520" column="76" selection-start-line="520" selection-start-column="76" selection-end-line="520" selection-end-column="76" />
+                <state relative-caret-position="59">
+                  <caret line="524" column="16" selection-start-line="524" selection-start-column="16" selection-end-line="524" selection-end-column="16" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#7389#8077#0" expanded="true" />
+                    <element signature="e#8076#8077#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/tags/SymbolClassTag.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="362">
-                  <caret line="42" column="39" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="39" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/SWFFrame.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="70" column="26" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#4477#4478#0" expanded="true" />
-                    <element signature="e#4515#4516#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/swftool/gencode/CodeGen.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1470">
-                  <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/FileInputStream.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="194" selection-start-line="194" selection-end-line="194" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/tags/DoABCTag.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swc/SWCScript.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swc/catalog/StAXCatalogReader.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2025">
-                  <caret line="160" selection-start-line="160" selection-end-line="160" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/ABCLinker.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="6885">
-                  <caret line="512" column="15" selection-start-line="512" selection-start-column="15" selection-end-line="512" selection-end-column="15" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swc/SWC.class">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1020">
-                  <caret line="95" column="22" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -195,11 +110,7 @@
             <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/Instruction.class">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="270">
-                  <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#2438#2439#0" expanded="true" />
-                    <element signature="e#2492#2493#0" expanded="true" />
-                  </folding>
+                  <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -207,7 +118,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/OneOperandInstruction.class">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-15">
+                <state relative-caret-position="75">
                   <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
                 </state>
               </provider>
@@ -216,14 +127,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/Name.class">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="151">
+                <state relative-caret-position="240">
                   <caret line="21" column="25" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#523#524#0" expanded="true" />
-                    <element signature="e#564#565#0" expanded="true" />
-                    <element signature="e#614#615#0" expanded="true" />
-                    <element signature="e#686#687#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -231,7 +136,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLClassLoader.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="166">
+                <state relative-caret-position="4860">
                   <caret line="380" selection-start-line="380" selection-end-line="380" />
                 </state>
               </provider>
@@ -240,7 +145,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/assets/res/words.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-60">
+                <state relative-caret-position="6207315">
                   <caret line="413821" column="13" selection-start-line="413821" selection-start-column="13" selection-end-line="413821" selection-end-column="13" />
                 </state>
               </provider>
@@ -386,10 +291,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="99" />
-    <option name="y" value="-13" />
-    <option name="width" value="1044" />
-    <option name="height" value="919" />
+    <option name="x" value="306" />
+    <option name="y" value="-19" />
+    <option name="width" value="906" />
+    <option name="height" value="673" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -413,8 +318,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -437,6 +342,24 @@
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
               <item name="asc2" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asc2" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asc2" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asc2" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="asc2_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asc2" type="b2602c69:ProjectViewProjectNode" />
@@ -489,7 +412,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="asc2" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557485930076" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558934854192" />
     <property name="last_opened_file_path" value="D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -497,19 +420,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\li456\IdeaProjects\asc2\assets\res" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\assets" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\src" />
-      <recent name="C:\Users\li456\IdeaProjects\asc2\src\swftool" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\li456\IdeaProjects\asc2\assets\res" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\src" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\lib" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\assets\assets" />
       <recent name="C:\Users\li456\IdeaProjects\asc2\assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\li456\IdeaProjects\asc2\assets\res" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\assets" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\src" />
+      <recent name="C:\Users\li456\IdeaProjects\asc2\src\swftool" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -580,9 +503,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1125" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1765625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -590,11 +512,11 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.55" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.25108695" />
       <window_info anchor="bottom" x="3" y="389" width="1876" height="253" id="Run" order="2" weight="0.29209185" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.3228261" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.3326087" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962137" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962137" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -729,24 +651,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/Pool.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/swftool/build/MyASSourceFileHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="338" selection-start-line="338" selection-end-line="338" />
         </state>
       </provider>
     </entry>
@@ -926,6 +834,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11070">
+          <caret line="847" column="19" selection-start-line="847" selection-start-column="19" selection-end-line="847" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/res/airglobal_strs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/tags/SymbolClassTag.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/SWFFrame.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="70" column="26" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swftool/gencode/CodeGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/FileInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/tags/DoABCTag.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -961,10 +907,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/swftool/Mixer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11070">
-          <caret line="847" column="19" selection-start-line="847" selection-start-column="19" selection-end-line="847" selection-end-column="19" />
+        <state relative-caret-position="81">
+          <caret line="237" column="35" selection-start-line="237" selection-start-column="35" selection-end-line="237" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/Instruction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/OneOperandInstruction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/Name.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4860">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/res/words.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6207315">
+          <caret line="413821" column="13" selection-start-line="413821" selection-start-column="13" selection-end-line="413821" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/res/GetLex.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="60" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -992,106 +980,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/res/airglobal_strs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/res/words.txt">
+    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/guava-r08.jar!/com/google/common/collect/AbstractBiMap.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="413821" column="13" selection-start-line="413821" selection-start-column="13" selection-end-line="413821" selection-end-column="13" />
+        <state relative-caret-position="177">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/res/GetLex.txt">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="60" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/Name.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/gencode/CodeGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/FileInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="194" selection-start-line="194" selection-end-line="194" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/Instruction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#2438#2439#0" expanded="true" />
-            <element signature="e#2492#2493#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="380" selection-start-line="380" selection-end-line="380" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/abc/semantics/OneOperandInstruction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swftool/Mixer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="237" column="35" selection-start-line="237" selection-start-column="35" selection-end-line="237" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/SWFFrame.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="70" column="26" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="26" />
-          <folding>
-            <element signature="e#4477#4478#0" expanded="true" />
-            <element signature="e#4515#4516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/sdk/AIRSDK_Compiler31/lib/compiler.jar!/com/adobe/flash/swf/tags/SymbolClassTag.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="42" column="39" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="39" />
+        <state relative-caret-position="367">
+          <caret line="1473" selection-start-line="1473" selection-end-line="1473" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/swftool/SwfToolUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="520" column="76" selection-start-line="520" selection-start-column="76" selection-end-line="520" selection-end-column="76" />
+        <state relative-caret-position="59">
+          <caret line="524" column="16" selection-start-line="524" selection-start-column="16" selection-end-line="524" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7389#8077#0" expanded="true" />
+            <element signature="e#8076#8077#0" expanded="true" />
           </folding>
         </state>
       </provider>
