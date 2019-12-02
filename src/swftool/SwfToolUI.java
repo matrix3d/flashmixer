@@ -61,17 +61,17 @@ public class SwfToolUI extends JPanel {
         add(mixmap);
         negMixmap=new JCheckBox("negmixmap",false);
         add(negMixmap);
-         mixvar=new JCheckBox("mixvar",true);
+         mixvar=new JCheckBox("mixvar",false);
         add(mixvar);
-         mixfunc=new JCheckBox("mixfunc",true);
+         mixfunc=new JCheckBox("mixfunc",false);
         add(mixfunc);
         reservedStructure=new JCheckBox("Reserved structure",true);
         add(reservedStructure);
-        rubbish=new JTextField("2000");
+        rubbish=new JTextField("0");
         add(rubbish);
-         mixcode=new JTextField("#");
+         mixcode=new JTextField("*");
         add(mixcode);
-        nomixpack=new JTextField("morn.core.components,playerio,hx.script,lib3d.air");
+        nomixpack=new JTextField("morn.core.components,playerio,hx.script");
         add(nomixpack);
 
         sdk=new JTextField("D:/sdk/AIRSDK_Compiler31");
@@ -481,11 +481,9 @@ public class SwfToolUI extends JPanel {
 
                 List<byte[]> abcs=new ArrayList();
                 List<SWFFrame> frames=swf.getFrames();
-                //SWFFrame frame =frames.get(0);
                 SymbolClassTag symbolClassTag=null;
                 for(SWFFrame frame: swf.getFrames()){
                     Iterator<ITag> it=frame.iterator();
-                    //int i=0;
                     while (it.hasNext()){
                         ITag iTag= it.next();
                         if(iTag instanceof DoABCTag){
