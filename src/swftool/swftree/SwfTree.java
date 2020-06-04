@@ -251,16 +251,20 @@ public class SwfTree extends JPanel
         //if(swf.getTopLevelClass()!=null){
         SWFTreeNode swfnode=node;
         swfnode.setUserObject(swf);
-        swfnode.add(new SWFTreeNode(null,null,swf.getHeader()));
-        swfnode.add(new SWFTreeNode(null,null,swf.getFileAttributes()+" as3:"+swf.getFileAttributes().isAS3()));
-        swfnode.add(new SWFTreeNode(null,"meteadata",swf.getMetadata()));
-        swfnode.add(new SWFTreeNode(null,null,swf.getBackgroundColor()));
-        swfnode.add(new SWFTreeNode(null,"enableDebugger2:"+(swf.getEnableDebugger2()!=null),null));
-        swfnode.add(new SWFTreeNode(null,"enableTelemtry:"+(swf.getEnableTelemetry()!=null),null));
-        swfnode.add(new SWFTreeNode(null,"ScriptLimits:"+(swf.getScriptLimits()!=null),null));
+
+        SWFTreeNode cnode=new SWFTreeNode(null,"info",null);
+        swfnode.add((cnode));
+        cnode.add(new SWFTreeNode(null,null,swf.getHeader()));
+        cnode.add(new SWFTreeNode(null,null,swf.getFileAttributes()+" as3:"+swf.getFileAttributes().isAS3()));
+        cnode.add(new SWFTreeNode(null,"meteadata",swf.getMetadata()));
+        cnode.add(new SWFTreeNode(null,null,swf.getBackgroundColor()));
+        cnode.add(new SWFTreeNode(null,"enableDebugger2:"+(swf.getEnableDebugger2()!=null),null));
+        cnode.add(new SWFTreeNode(null,"enableTelemtry:"+(swf.getEnableTelemetry()!=null),null));
+        cnode.add(new SWFTreeNode(null,"ScriptLimits:"+(swf.getScriptLimits()!=null),null));
         if(swf.getTopLevelClass()!=null) {
-            swfnode.add(new SWFTreeNode(null, null, swf.getTopLevelClass()));
+            cnode.add(new SWFTreeNode(null, null, swf.getTopLevelClass()));
         }
+
         SWFTreeNode frameTreeNode=new SWFTreeNode(null,null,swf.getFrames());
         swfnode.add(frameTreeNode);
         for(SWFFrame frame: swf.getFrames()){
