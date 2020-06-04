@@ -102,6 +102,7 @@ public class SwfToolUI extends JPanel {
         JButton btn6=new JButton("at enable");
         btn6.setPreferredSize(new Dimension(100,100));
         //jPanel.add(btn6);
+
         JButton btn7=new JButton("swf2swc");
         btn7.setPreferredSize(new Dimension(100,100));
         jPanel.add(btn7);

@@ -35,7 +35,10 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeNode;
 
+import com.adobe.flash.abc.visitors.IABCVisitor;
+import com.adobe.flash.swf.tags.DoABCTag;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
@@ -271,6 +274,7 @@ public class Main extends JPanel
 		JMenuBar menuBar = createMenu(dockables);
 		frame.setJMenuBar(menuBar);
 
+		HashMap<DefaultMutableTreeNode, Dockable> node2Dockable = new HashMap<>();
         contactTree.tree.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
@@ -279,13 +283,22 @@ public class Main extends JPanel
                 if(treeNode.getUserObject() instanceof CodeInfo) {
                     CodeInfo visitor = (CodeInfo) treeNode.getUserObject();
                     if (visitor != null) {
-                        CodeView codeView= new CodeView(visitor);
-                        Dockable dockable=createDockable(treeNode.toString(), 	 codeView,      treeNode.toString(),  new ImageIcon(getClass().getResource("/com/javadocking/resources/images/text12.gif")),     "<html>De Bello Gallico: Liber 1<br><i>Gaius Julius Caesar</i><html>");
-
-                        centerTabbedDock.addDockable(dockable, new Position(0));
+                        if(node2Dockable.containsKey(treeNode)){
+                            Dockable dockable=node2Dockable.get(treeNode);
+                           // dockable.getContent().getParent().add(dockable.getContent());
+                            ///dockable.setState(DockableState.MAXIMIZED,dockable.getDock());
+                            centerTabbedDock.removeDockable(dockable);
+                            centerTabbedDock.addDockable(dockable,new Position(0));
+                        }else {
+                            CodeView codeView = new CodeView(visitor);
+                            Dockable dockable = createDockable(treeNode.toString(), codeView, treeNode.toString(), new ImageIcon(getClass().getResource("/com/javadocking/resources/images/text12.gif")), "<html>De Bello Gallico: Liber 1<br><i>Gaius Julius Caesar</i><html>");
+                            centerTabbedDock.addDockable(dockable, new Position(0));
+                            node2Dockable.put(treeNode,dockable);
+                        }
                     }
                 }
             }
+
         });
 
     }
