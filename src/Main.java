@@ -200,10 +200,10 @@ public class Main extends JPanel
 		// The 4 windows have to be splittable.
 		SplitDock centerSplitDock = new SplitDock();
 		centerSplitDock.addChildDock(centerTabbedDock, new Position(Position.CENTER));
-		centerSplitDock.addChildDock(rightTabbedDock, new Position(Position.RIGHT));
+		//centerSplitDock.addChildDock(rightTabbedDock, new Position(Position.RIGHT));
 		centerSplitDock.setDividerLocation(530);
 		SplitDock bottomSplitDock = new SplitDock();
-		bottomSplitDock.addChildDock(bottomTabbedDock, new Position(Position.CENTER));
+		//bottomSplitDock.addChildDock(bottomTabbedDock, new Position(Position.CENTER));
 		SplitDock rightSplitDock = new SplitDock();
 		rightSplitDock.addChildDock(centerSplitDock, new Position(Position.CENTER));
 		rightSplitDock.addChildDock(bottomSplitDock, new Position(Position.BOTTOM));

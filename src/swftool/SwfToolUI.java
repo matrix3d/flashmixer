@@ -107,6 +107,11 @@ public class SwfToolUI extends JPanel {
         btn7.setPreferredSize(new Dimension(100,100));
         jPanel.add(btn7);
 
+
+        JButton btn8=new JButton("trace");
+        btn8.setPreferredSize(new Dimension(100,100));
+        jPanel.add(btn8);
+
         new DropTarget(btn1, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
             @Override
             public void drop(DropTargetDropEvent dtde) {
@@ -221,6 +226,24 @@ public class SwfToolUI extends JPanel {
                         dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
                         java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
                         build(list);
+                        dtde.dropComplete(true);
+                    }else{
+                        dtde.rejectDrop();
+                    }
+                }catch (Exception e){
+
+                }
+            }
+        });
+
+        new DropTarget(btn8, DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter() {
+            @Override
+            public void drop(DropTargetDropEvent dtde) {
+                try{
+                    if(dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+                        dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
+                        java.util.List<File> list = (java.util.List<File>)(dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
+                        rptrace(list);
                         dtde.dropComplete(true);
                     }else{
                         dtde.rejectDrop();
@@ -461,6 +484,18 @@ public class SwfToolUI extends JPanel {
         for(File file:list){
             new Builder(file);
 
+        }
+        //showMessageDialog(null,"over");
+    }
+    private void rptrace(java.util.List<File> list){
+        for(File file:list){
+            RpTrace rpTrace= new RpTrace(file);
+            SWFWriter writer=new SWFWriter(rpTrace.outswf,rpTrace.outswf.getHeader().getCompression());
+            try {
+                writer.writeTo(new File(file.getParent()+File.separator+"notrace_"+file.getName()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         //showMessageDialog(null,"over");
     }
