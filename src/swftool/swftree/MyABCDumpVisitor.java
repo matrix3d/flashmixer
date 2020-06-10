@@ -280,13 +280,15 @@ public class MyABCDumpVisitor  {
 
     protected void writeMethodInfo(String qualStr, String nameStr, String kindStr, MethodInfo methodInfo, boolean isStatic, boolean isOverride, boolean isFinal) {
         //this.dumpedMethods.add(methodInfo);
-        List<String> paramTypeStrings = new Vector();
-        Iterator i$ = methodInfo.getParamTypes().iterator();
+        //List<String> paramTypeStrings = new Vector();
+        //Iterator i$ = methodInfo.getParamTypes().iterator();
 
-        while(i$.hasNext()) {
-            Name paramTypeName = (Name)i$.next();
-            paramTypeStrings.add(ABCDumpUtils.nameToString(paramTypeName));
-        }
+        //methodInfo.getParamTypes().
+
+        //while(i$.hasNext()) {
+        //    Name paramTypeName = (Name)i$.next();
+        //    paramTypeStrings.add(ABCDumpUtils.nameToString(paramTypeName));
+        //}
 
         String staticStr = isStatic ? "static " : "";
         String overrideStr = isOverride ? "override " : "";
@@ -300,7 +302,31 @@ public class MyABCDumpVisitor  {
         this.printer.print(nativeStr + finalStr + overrideStr + kindStr + " ",CodeType.key);
         this.printer.print(nameStr ,CodeType.norm);
         this.printer.print("(",CodeType.norm) ;
-        this.printer.print(StringUtils.joinOn(",", paramTypeStrings),CodeType.Class);
+
+        for(int i=0;i<methodInfo.getParamTypes().size();i++){
+            if(i!=0){
+                printer.print(",",CodeType.norm);
+            }
+            this.printer.print(methodInfo.getParamNames().get(i),CodeType.norm);
+            this.printer.print(":",CodeType.norm);
+            this.printer.print(ABCDumpUtils.nameToString(methodInfo.getParamTypes().get(i)),CodeType.Class);
+            if(i<methodInfo.getDefaultValues().size()){
+                this.printer.print("=",CodeType.norm);
+                Object dvalue=methodInfo.getDefaultValues().get(i).getValue();
+                if(dvalue instanceof String){
+                    dvalue="\""+StringUtils.stringToEscapedString((String) dvalue)+"\"";
+                }
+                if(dvalue==ABCConstants.NULL_VALUE){
+                    dvalue="null";
+                }
+                if(dvalue==ABCConstants.UNDEFINED_VALUE){
+                    dvalue="undefined";
+                }
+                this.printer.print(dvalue.toString(),CodeType.norm);
+            }
+        }
+        //this.printer.print(StringUtils.joinOn(",", paramTypeStrings),CodeType.Class);
+
         this.printer.print( "):",CodeType.norm);
         this.printer.println(ABCDumpUtils.nameToString(methodInfo.getReturnType()),CodeType.Class);
         MethodBodyInfo mb = this.getMethodBodyForMethodInfo(methodInfo);
@@ -321,7 +347,7 @@ public class MyABCDumpVisitor  {
                 this.printer.indent();
 
                 Trait trait;
-                for(Iterator i$4 = mb.getTraits().iterator(); i$.hasNext(); this.writeSlotTrait(kindStr, trait, false)) {
+                for(Iterator i$4 = mb.getTraits().iterator(); i$4.hasNext(); this.writeSlotTrait(kindStr, trait, false)) {
                     trait = (Trait)i$4.next();
                     switch(trait.getKind()) {
                         case 0:
